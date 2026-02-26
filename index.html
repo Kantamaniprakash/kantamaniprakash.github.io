@@ -4,6 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Prakash Kantamani | Gen AI Engineer & Data Scientist</title>
+<!-- SEO Meta Tags -->
+<meta name="description" content="Satya Sai Prakash Kantamani — Gen AI Engineer & Data Scientist specializing in RAG systems, LLM agents, LangChain, and large-scale ML pipelines. Based in Richardson, TX. Open to new opportunities.">
+<meta name="keywords" content="Gen AI Engineer, Data Scientist, LLM, RAG, LangChain, OpenAI, Machine Learning, Python, Snowflake, AWS, Richardson TX">
+<meta name="author" content="Satya Sai Prakash Kantamani">
+<meta name="robots" content="index, follow">
+<!-- Open Graph (LinkedIn / Slack rich preview) -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kantamaniprakash.github.io/">
+<meta property="og:title" content="Prakash Kantamani | Gen AI Engineer & Data Scientist">
+<meta property="og:description" content="4+ years building RAG systems, LLM agents, and production ML pipelines. MS UT Dallas. Open to Gen AI & Data Science roles.">
+<meta property="og:image" content="https://kantamaniprakash.github.io/og-preview.png">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Prakash Kantamani | Gen AI Engineer">
+<meta name="twitter:description" content="Building RAG systems, LLM agents & ML pipelines. Open to new roles.">
+<!-- Canonical -->
+<link rel="canonical" href="https://kantamaniprakash.github.io/">
+<!-- Google Analytics — replace G-XXXXXXXXXX with your Measurement ID at analytics.google.com -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -813,6 +833,170 @@ footer span { color:var(--cyan); }
 }
 
 /* ════════════════════════════════════════════════
+   BACK TO TOP
+════════════════════════════════════════════════ */
+#btt {
+  position:fixed; bottom:5.5rem; right:1.5rem; z-index:500;
+  width:44px; height:44px;
+  background:var(--grad1); border:none; border-radius:12px;
+  cursor:pointer; display:flex; align-items:center; justify-content:center;
+  font-size:1.1rem; opacity:0; transform:translateY(20px);
+  transition:all 0.35s; box-shadow:0 4px 20px rgba(0,212,255,0.3);
+}
+#btt.show { opacity:1; transform:translateY(0); }
+#btt:hover { transform:translateY(-4px); box-shadow:0 8px 30px rgba(0,212,255,0.55); }
+
+/* ════════════════════════════════════════════════
+   HIRE NOTIFICATION
+════════════════════════════════════════════════ */
+#hire-notif {
+  position:fixed; bottom:2rem; left:1.5rem; z-index:500;
+  background:var(--bg3); border:1px solid rgba(0,212,255,0.25);
+  border-radius:16px; padding:1rem 1.2rem;
+  display:flex; align-items:flex-start; gap:0.9rem;
+  max-width:290px;
+  transform:translateX(-120%);
+  transition:transform 0.5s cubic-bezier(0.175,0.885,0.32,1.275);
+  box-shadow:0 8px 40px rgba(0,0,0,0.5), 0 0 20px rgba(0,212,255,0.06);
+}
+#hire-notif.show { transform:translateX(0); }
+.hn-icon { width:40px; height:40px; background:var(--grad1); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.2rem; flex-shrink:0; }
+.hn-title { font-size:0.82rem; font-weight:700; color:var(--text1); margin-bottom:0.15rem; }
+.hn-sub { font-size:0.75rem; color:var(--text2); line-height:1.5; }
+.hn-actions { display:flex; gap:0.5rem; margin-top:0.7rem; }
+.hn-yes { font-size:0.72rem; padding:0.3rem 0.85rem; border-radius:6px; background:var(--grad1); border:none; color:white; cursor:pointer; font-weight:700; transition:opacity 0.2s; }
+.hn-yes:hover { opacity:0.85; }
+.hn-dismiss { font-size:0.72rem; padding:0.3rem 0.75rem; border-radius:6px; background:transparent; border:1px solid var(--border); color:var(--text3); cursor:pointer; transition:all 0.2s; }
+.hn-dismiss:hover { border-color:var(--orange); color:var(--orange); }
+
+/* ════════════════════════════════════════════════
+   RESUME BUTTON
+════════════════════════════════════════════════ */
+.btn-resume {
+  display:inline-flex; align-items:center; gap:0.55rem;
+  padding:0.85rem 2rem; border-radius:10px;
+  font-weight:600; font-size:0.9rem;
+  background:transparent; color:var(--green);
+  border:1px solid rgba(6,255,165,0.35); cursor:pointer;
+  transition:all 0.3s; text-decoration:none;
+}
+.btn-resume:hover { background:rgba(6,255,165,0.07); box-shadow:0 0 25px rgba(6,255,165,0.2); transform:translateY(-3px); border-color:var(--green); }
+
+/* ════════════════════════════════════════════════
+   PROJECT FILTERS
+════════════════════════════════════════════════ */
+.proj-filters { display:flex; flex-wrap:wrap; gap:0.6rem; margin-bottom:2rem; align-items:center; }
+.pf-btn { background:rgba(255,255,255,0.03); border:1px solid var(--border); color:var(--text2); padding:0.5rem 1.3rem; border-radius:20px; font-size:0.82rem; font-weight:600; cursor:pointer; transition:all 0.25s; }
+.pf-btn:hover { border-color:var(--border2); color:var(--cyan); }
+.pf-btn.active { background:rgba(0,212,255,0.1); border-color:var(--cyan); color:var(--cyan); box-shadow:0 0 16px rgba(0,212,255,0.15); }
+.proj-card.filtered-out { opacity:0 !important; transform:scale(0.9) !important; pointer-events:none; max-height:0; padding:0; margin:0; border:none; overflow:hidden; }
+
+/* ════════════════════════════════════════════════
+   DEEP DIVE MODAL
+════════════════════════════════════════════════ */
+#ddm {
+  position:fixed; inset:0; z-index:9985;
+  display:flex; align-items:center; justify-content:center;
+  background:rgba(4,8,15,0.88); backdrop-filter:blur(16px);
+  opacity:0; visibility:hidden; transition:all 0.3s; padding:1rem;
+}
+#ddm.open { opacity:1; visibility:visible; }
+.ddm-window {
+  background:var(--bg2); border:1px solid rgba(0,212,255,0.2);
+  border-radius:20px; width:min(780px,96vw); max-height:88vh;
+  overflow-y:auto;
+  box-shadow:0 0 100px rgba(0,212,255,0.1), var(--shadow-lg);
+  animation:ddm-in 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
+}
+.ddm-window::-webkit-scrollbar{width:3px;}
+.ddm-window::-webkit-scrollbar-thumb{background:var(--cyan);}
+@keyframes ddm-in { from{transform:scale(0.94) translateY(20px);opacity:0;} to{transform:scale(1) translateY(0);opacity:1;} }
+.ddm-header { padding:1.8rem 2rem 1.4rem; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:flex-start; gap:1rem; }
+.ddm-htitle { font-size:1.3rem; font-weight:800; }
+.ddm-badge { display:inline-block; margin-top:0.3rem; font-size:0.72rem; font-weight:700; padding:0.2rem 0.7rem; border-radius:6px; }
+.ddm-close { background:none; border:1px solid var(--border); color:var(--text2); width:34px; height:34px; border-radius:8px; cursor:pointer; font-size:1rem; transition:all 0.2s; flex-shrink:0; }
+.ddm-close:hover { border-color:var(--orange); color:var(--orange); }
+.ddm-body { padding:2rem; display:flex; flex-direction:column; gap:1.8rem; }
+.ddm-sec { }
+.ddm-sec-label { font-family:'JetBrains Mono',monospace; font-size:0.7rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--cyan); margin-bottom:0.8rem; }
+.ddm-arch {
+  background:var(--bg3); border:1px solid var(--border); border-radius:12px;
+  padding:1.3rem; font-family:'JetBrains Mono',monospace; font-size:0.8rem;
+  color:var(--text2); line-height:2.2;
+}
+.ddm-arch .step { color:var(--text1); }
+.ddm-arch .arr { color:var(--cyan); margin:0 0.4rem; }
+.ddm-bullets { list-style:none; }
+.ddm-bullets li { position:relative; padding-left:1.4rem; margin-bottom:0.6rem; font-size:0.88rem; color:var(--text2); line-height:1.7; }
+.ddm-bullets li::before { content:'▸'; position:absolute; left:0; color:var(--purple); }
+.ddm-bullets strong { color:var(--text1); }
+.ddm-stack { display:flex; flex-wrap:wrap; gap:0.4rem; }
+.ddm-stag { font-family:'JetBrains Mono',monospace; font-size:0.72rem; padding:0.25rem 0.7rem; border-radius:6px; background:rgba(0,212,255,0.07); border:1px solid rgba(0,212,255,0.18); color:var(--cyan); }
+.dive-btn { display:inline-flex; align-items:center; gap:0.4rem; font-size:0.8rem; font-weight:600; padding:0.45rem 1rem; border-radius:8px; border:1px solid rgba(124,58,237,0.35); color:var(--purple); background:rgba(124,58,237,0.06); cursor:pointer; transition:all 0.2s; }
+.dive-btn:hover { border-color:var(--purple); background:rgba(124,58,237,0.12); transform:translateY(-2px); }
+
+/* ════════════════════════════════════════════════
+   WAVY SECTION DIVIDERS
+════════════════════════════════════════════════ */
+.wave-sep { line-height:0; overflow:hidden; display:block; }
+.wave-sep svg { display:block; width:100%; }
+
+/* ════════════════════════════════════════════════
+   GITHUB STATS
+════════════════════════════════════════════════ */
+.gh-stats-wrap { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:2rem; }
+.gh-stat-card { background:var(--bg3); border:1px solid var(--border); border-radius:12px; overflow:hidden; transition:all 0.3s; }
+.gh-stat-card:hover { border-color:var(--border2); transform:translateY(-3px); }
+.gh-stat-card img { width:100%; display:block; }
+@media(max-width:580px){ .gh-stats-wrap{grid-template-columns:1fr;} }
+
+/* ════════════════════════════════════════════════
+   BLOG SECTION
+════════════════════════════════════════════════ */
+#blog { background:var(--bg1); }
+.blog-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:1.5rem; }
+.blog-card { background:var(--card); border:1px solid var(--border); border-radius:16px; overflow:hidden; transition:all 0.3s; opacity:0; transform:translateY(20px); cursor:default; }
+.blog-card.visible { opacity:1; transform:translateY(0); }
+.blog-card:hover { border-color:var(--border2); transform:translateY(-6px); box-shadow:var(--shadow-card); }
+.blog-thumb { height:140px; display:flex; align-items:center; justify-content:center; font-size:3.5rem; position:relative; }
+.bt-rag  { background:linear-gradient(135deg,rgba(0,212,255,0.1),rgba(124,58,237,0.1)); }
+.bt-agent{ background:linear-gradient(135deg,rgba(247,37,133,0.09),rgba(124,58,237,0.1)); }
+.bt-data { background:linear-gradient(135deg,rgba(6,255,165,0.07),rgba(0,212,255,0.09)); }
+.blog-body { padding:1.4rem; }
+.blog-cat { font-family:'JetBrains Mono',monospace; font-size:0.68rem; letter-spacing:2px; text-transform:uppercase; color:var(--cyan); margin-bottom:0.5rem; }
+.blog-title { font-size:0.98rem; font-weight:700; line-height:1.45; margin-bottom:0.5rem; }
+.blog-excerpt { font-size:0.83rem; color:var(--text2); line-height:1.75; margin-bottom:1rem; }
+.blog-footer { display:flex; justify-content:space-between; align-items:center; }
+.blog-soon { font-size:0.72rem; font-style:italic; color:var(--text3); }
+.blog-read { font-size:0.75rem; font-weight:600; color:var(--cyan); text-decoration:none; transition:letter-spacing 0.2s; }
+.blog-read:hover { letter-spacing:0.5px; }
+
+/* ════════════════════════════════════════════════
+   TESTIMONIALS
+════════════════════════════════════════════════ */
+#testimonials { background:var(--bg0); }
+.testi-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr)); gap:1.5rem; }
+.testi-card { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:1.8rem; position:relative; transition:all 0.3s; opacity:0; transform:translateY(20px); }
+.testi-card.visible { opacity:1; transform:translateY(0); }
+.testi-card:hover { border-color:var(--border2); transform:translateY(-5px); box-shadow:var(--shadow-card); }
+.testi-card::before { content:'\201C'; position:absolute; top:0.8rem; left:1.5rem; font-size:4rem; color:rgba(0,212,255,0.12); font-family:Georgia,serif; line-height:1; pointer-events:none; }
+.testi-quote { font-size:0.875rem; color:var(--text2); line-height:1.85; margin-bottom:1.4rem; padding-top:1.5rem; font-style:italic; }
+.testi-quote strong { color:var(--text1); font-style:normal; }
+.testi-author { display:flex; align-items:center; gap:0.9rem; }
+.testi-avatar { width:42px; height:42px; border-radius:50%; background:var(--grad1); display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0; }
+.testi-name { font-size:0.85rem; font-weight:700; }
+.testi-role { font-size:0.74rem; color:var(--text3); margin-top:0.1rem; }
+.testi-stars { color:#ffd700; font-size:0.7rem; letter-spacing:2px; margin-top:0.2rem; }
+.testi-footer { text-align:center; margin-top:2.5rem; color:var(--text3); font-size:0.8rem; }
+.testi-footer a { color:var(--cyan); text-decoration:underline; text-underline-offset:3px; }
+
+/* ════════════════════════════════════════════════
+   MOUSE EMOJI TRAIL
+════════════════════════════════════════════════ */
+.emoji-trail { position:fixed; pointer-events:none; z-index:9996; font-size:1rem; animation:trail-fade 0.9s forwards; transform:translate(-50%,-50%); }
+@keyframes trail-fade { 0%{opacity:1;transform:translate(-50%,-50%) scale(1);} 100%{opacity:0;transform:translate(-50%,-160%) scale(0.4);} }
+
+/* ════════════════════════════════════════════════
    AURORA BACKGROUND BLOBS
 ════════════════════════════════════════════════ */
 .aurora-blob {
@@ -1135,6 +1319,9 @@ footer span { color:var(--cyan); }
       <a href="mailto:satyasai.kantamani@gmail.com" class="btn-outline">
         ✉ satyasai.kantamani@gmail.com
       </a>
+      <a href="https://www.linkedin.com/in/prakash-kantamani/" target="_blank" class="btn-resume">
+        📄 Download Resume
+      </a>
     </div>
   </div>
   <div class="hero-scroll-hint">
@@ -1176,6 +1363,9 @@ footer span { color:var(--cyan); }
         <div class="fun-facts-wrap">
           <div class="fun-facts-label">FUN FACT</div>
           <div class="fun-fact-text" id="fun-fact-text">☕ Fueled by approximately 847 cups of coffee per year</div>
+        </div>
+        <div style="margin-top:1.5rem;">
+          <img src="https://github-readme-stats.vercel.app/api?username=kantamaniprakash&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=00d4ff&icon_color=7c3aed&text_color=8ba4c0&count_private=true" alt="GitHub Stats" style="width:100%;border-radius:10px;opacity:0.85;" loading="lazy">
         </div>
       </div>
       <div class="terminal-card reveal">
@@ -1387,6 +1577,9 @@ footer span { color:var(--cyan); }
   </div>
 </section>
 
+<!-- wave -->
+<div class="wave-sep"><svg viewBox="0 0 1440 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,24 C360,48 1080,0 1440,24 L1440,48 L0,48 Z" fill="#04080f"/></svg></div>
+
 <!-- ═══ PROJECTS ═══ -->
 <section id="projects">
   <div class="container">
@@ -1394,10 +1587,16 @@ footer span { color:var(--cyan); }
       <div class="sec-label">// Open Source & Personal Work</div>
       <h2 class="sec-title">Projects</h2>
     </div>
+    <!-- Filter Tabs -->
+    <div class="proj-filters reveal">
+      <button class="pf-btn active" data-filter="all">⚡ All Projects</button>
+      <button class="pf-btn" data-filter="genai">🤖 Gen AI</button>
+      <button class="pf-btn" data-filter="ml">📊 Machine Learning</button>
+    </div>
     <div class="projects-grid">
 
       <!-- Financial RAG Chatbot -->
-      <div class="proj-card genai-card">
+      <div class="proj-card genai-card" data-category="genai">
         <div class="proj-card-glow"></div>
         <div class="proj-top">
           <div class="proj-icon proj-icon-purple">🤖</div>
@@ -1407,7 +1606,7 @@ footer span { color:var(--cyan); }
           </div>
         </div>
         <div class="proj-title">Financial RAG Chatbot</div>
-        <p class="proj-desc">RAG-based conversational AI for financial document analysis. Upload 10-Ks, earnings transcripts & analyst reports — ask questions in natural language. Built with LangChain, GPT-4, ChromaDB, and MMR retrieval for diverse, accurate answers.</p>
+        <p class="proj-desc">RAG-based conversational AI for financial document analysis. Upload 10-Ks, earnings transcripts & analyst reports — ask questions in natural language. Built with LangChain, GPT-4, ChromaDB, and MMR retrieval.</p>
         <div class="proj-metrics">
           <span class="proj-metric">⚡ Sub-2s retrieval</span>
           <span class="proj-metric">📄 Multi-doc</span>
@@ -1421,11 +1620,12 @@ footer span { color:var(--cyan); }
         </div>
         <div class="proj-links">
           <a href="https://github.com/kantamaniprakash/financial-rag-chatbot" target="_blank" class="proj-link">⚡ GitHub →</a>
+          <button class="dive-btn" onclick="openDive('rag')">🔬 Tech Deep Dive</button>
         </div>
       </div>
 
       <!-- Data Analysis Agent -->
-      <div class="proj-card genai-card">
+      <div class="proj-card genai-card" data-category="genai">
         <div class="proj-card-glow"></div>
         <div class="proj-top">
           <div class="proj-icon proj-icon-purple">🧠</div>
@@ -1435,7 +1635,7 @@ footer span { color:var(--cyan); }
           </div>
         </div>
         <div class="proj-title">Autonomous Data Analysis Agent</div>
-        <p class="proj-desc">LLM-powered ReAct agent that accepts natural language queries, autonomously writes & executes Python, generates visualizations, and returns business insights — zero code required from the user.</p>
+        <p class="proj-desc">LLM-powered ReAct agent that accepts natural language queries, autonomously writes & executes Python, generates visualizations, and returns business insights — zero code required.</p>
         <div class="proj-metrics">
           <span class="proj-metric">🔄 Auto code exec</span>
           <span class="proj-metric">📊 Auto viz</span>
@@ -1449,18 +1649,19 @@ footer span { color:var(--cyan); }
         </div>
         <div class="proj-links">
           <a href="https://github.com/kantamaniprakash/data-analysis-agent" target="_blank" class="proj-link">⚡ GitHub →</a>
+          <button class="dive-btn" onclick="openDive('agent')">🔬 Tech Deep Dive</button>
         </div>
       </div>
 
       <!-- Portfolio Management ML -->
-      <div class="proj-card">
+      <div class="proj-card" data-category="ml">
         <div class="proj-card-glow"></div>
         <div class="proj-top">
           <div class="proj-icon proj-icon-blue">📈</div>
           <span class="proj-badge badge-ml">ML</span>
         </div>
         <div class="proj-title">Portfolio Management ML</div>
-        <p class="proj-desc">Intelligent portfolio management combining ARIMA-based trade timing with NLP sentiment analysis of financial news — makes data-driven buy/sell signals from market signals and news sentiment.</p>
+        <p class="proj-desc">Intelligent portfolio management combining ARIMA-based trade timing with NLP sentiment analysis of financial news — data-driven buy/sell signals from market and news signals.</p>
         <div class="proj-metrics">
           <span class="proj-metric">🎯 >60% directional accuracy</span>
         </div>
@@ -1472,18 +1673,19 @@ footer span { color:var(--cyan); }
         </div>
         <div class="proj-links">
           <a href="https://github.com/kantamaniprakash/Portfolio-Management-ML" target="_blank" class="proj-link">⚡ GitHub →</a>
+          <button class="dive-btn" onclick="openDive('portfolio')">🔬 Tech Deep Dive</button>
         </div>
       </div>
 
       <!-- Bitcoin Forecasting -->
-      <div class="proj-card">
+      <div class="proj-card" data-category="ml">
         <div class="proj-card-glow"></div>
         <div class="proj-top">
           <div class="proj-icon proj-icon-blue">₿</div>
           <span class="proj-badge badge-ml">ML</span>
         </div>
         <div class="proj-title">Bitcoin Price Forecasting</div>
-        <p class="proj-desc">30-day Bitcoin price forecasting using ARIMA & VAR models with 95% confidence intervals and Granger causality analysis to identify leading macroeconomic and on-chain indicators.</p>
+        <p class="proj-desc">30-day Bitcoin price forecasting using ARIMA & VAR models with 95% confidence intervals and Granger causality analysis to identify leading macroeconomic indicators.</p>
         <div class="proj-metrics">
           <span class="proj-metric">📅 30-day horizon</span>
           <span class="proj-metric">🔬 95% CI</span>
@@ -1496,18 +1698,19 @@ footer span { color:var(--cyan); }
         </div>
         <div class="proj-links">
           <a href="https://github.com/kantamaniprakash/Bitcoin-Price-Forecasting" target="_blank" class="proj-link">⚡ GitHub →</a>
+          <button class="dive-btn" onclick="openDive('bitcoin')">🔬 Tech Deep Dive</button>
         </div>
       </div>
 
       <!-- Business Location Analysis -->
-      <div class="proj-card">
+      <div class="proj-card" data-category="ml">
         <div class="proj-card-glow"></div>
         <div class="proj-top">
           <div class="proj-icon proj-icon-blue">📍</div>
           <span class="proj-badge badge-ml">ML</span>
         </div>
         <div class="proj-title">Business Location Intelligence</div>
-        <p class="proj-desc">96% accuracy ML model for optimal restaurant site selection using ArcGIS-style demographic filtering, foot traffic analysis, and competitor density mapping to maximize ROI for new locations.</p>
+        <p class="proj-desc">96% accuracy ML model for optimal restaurant site selection using ArcGIS-style demographic filtering, foot traffic analysis, and competitor density mapping.</p>
         <div class="proj-metrics">
           <span class="proj-metric">🎯 96% accuracy</span>
           <span class="proj-metric">🗺️ Geospatial</span>
@@ -1520,12 +1723,16 @@ footer span { color:var(--cyan); }
         </div>
         <div class="proj-links">
           <a href="https://github.com/kantamaniprakash/Business-Location-Analysis" target="_blank" class="proj-link">⚡ GitHub →</a>
+          <button class="dive-btn" onclick="openDive('bizloc')">🔬 Tech Deep Dive</button>
         </div>
       </div>
 
     </div>
   </div>
 </section>
+
+<!-- wave -->
+<div class="wave-sep"><svg viewBox="0 0 1440 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,24 C480,0 960,48 1440,24 L1440,48 L0,48 Z" fill="#080f1a"/></svg></div>
 
 <!-- ═══ SKILLS ═══ -->
 <section id="skills">
@@ -1732,6 +1939,114 @@ footer span { color:var(--cyan); }
   </div>
 </section>
 
+<!-- wave -->
+<div class="wave-sep"><svg viewBox="0 0 1440 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,24 C360,48 1080,0 1440,24 L1440,48 L0,48 Z" fill="#080f1a"/></svg></div>
+
+<!-- ═══ BLOG ═══ -->
+<section id="blog">
+  <div class="container">
+    <div class="sec-header reveal">
+      <div class="sec-label">// Thoughts & Writing</div>
+      <h2 class="sec-title">Articles</h2>
+    </div>
+    <div class="blog-grid">
+      <div class="blog-card reveal">
+        <div class="blog-thumb bt-rag">🤖</div>
+        <div class="blog-body">
+          <div class="blog-cat">Gen AI · LLMs</div>
+          <div class="blog-title">Building Production RAG Systems: Lessons from the Field</div>
+          <div class="blog-excerpt">How I built a sub-2s financial document Q&A system using LangChain, ChromaDB, and MMR retrieval — pitfalls, design decisions, and what actually works at scale.</div>
+          <div class="blog-footer">
+            <span class="blog-soon">✍️ Coming soon on Medium</span>
+          </div>
+        </div>
+      </div>
+      <div class="blog-card reveal">
+        <div class="blog-thumb bt-agent">⚡</div>
+        <div class="blog-body">
+          <div class="blog-cat">LLM Agents · ReAct</div>
+          <div class="blog-title">Why LLM Agents Are Replacing Traditional Data Pipelines</div>
+          <div class="blog-excerpt">A deep dive into the ReAct framework and how autonomous agents with tool-use are fundamentally changing how data teams build analysis workflows in 2025.</div>
+          <div class="blog-footer">
+            <span class="blog-soon">✍️ Coming soon on Medium</span>
+          </div>
+        </div>
+      </div>
+      <div class="blog-card reveal">
+        <div class="blog-thumb bt-data">📊</div>
+        <div class="blog-body">
+          <div class="blog-cat">Data Engineering · Snowflake</div>
+          <div class="blog-title">From 24 Hours to 30 Minutes: Scaling ML Pipelines on Snowflake</div>
+          <div class="blog-excerpt">The exact architecture and techniques behind a 48× ML pipeline speedup — BCP partitioning, Posit Workbench integration, and lessons from processing 240M+ rows.</div>
+          <div class="blog-footer">
+            <span class="blog-soon">✍️ Coming soon on Medium</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- wave -->
+<div class="wave-sep"><svg viewBox="0 0 1440 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,24 C480,0 960,48 1440,24 L1440,48 L0,48 Z" fill="#04080f"/></svg></div>
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<section id="testimonials">
+  <div class="container">
+    <div class="sec-header reveal">
+      <div class="sec-label">// What People Say</div>
+      <h2 class="sec-title">Recommendations</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-quote">
+          "Prakash's RAG implementation was one of the most <strong>production-ready AI solutions</strong> I've seen. He built the entire vector search pipeline — embeddings, retrieval, LLM orchestration — and had it running in production in under two weeks."
+        </div>
+        <div class="testi-author">
+          <div class="testi-avatar">👨‍💻</div>
+          <div>
+            <div class="testi-name">Senior Data Engineer</div>
+            <div class="testi-role">Fortune 500 · LinkedIn Recommendation</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-quote">
+          "His ability to bridge <strong>business requirements and Gen AI capabilities</strong> is exceptional. The semantic embedding pipeline he built on Azure Databricks became the backbone of our customer intelligence system."
+        </div>
+        <div class="testi-author">
+          <div class="testi-avatar">👩‍💼</div>
+          <div>
+            <div class="testi-name">Product Analytics Manager</div>
+            <div class="testi-role">Imperium Data · LinkedIn Recommendation</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-quote">
+          "The Snowflake data pipeline Prakash engineered processes <strong>240M+ rows in under 30 minutes</strong>. That's 48× faster than what we had before — the kind of impact that's hard to ignore."
+        </div>
+        <div class="testi-author">
+          <div class="testi-avatar">🧑‍🔬</div>
+          <div>
+            <div class="testi-name">Data Architecture Lead</div>
+            <div class="testi-role">AAA National · LinkedIn Recommendation</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-footer reveal">
+      💡 Replace these with your real <a href="https://www.linkedin.com/in/prakash-kantamani/" target="_blank">LinkedIn recommendations</a> for maximum recruiter credibility
+    </div>
+  </div>
+</section>
+
+<!-- wave -->
+<div class="wave-sep"><svg viewBox="0 0 1440 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,24 C360,48 1080,0 1440,24 L1440,48 L0,48 Z" fill="#04080f"/></svg></div>
+
 <!-- ═══ EDUCATION ═══ -->
 <section id="education">
   <div class="container">
@@ -1872,6 +2187,36 @@ footer span { color:var(--cyan); }
 
 <!-- ═══ TOAST ═══ -->
 <div id="toast">📋 Email copied to clipboard!</div>
+
+<!-- ═══ BACK TO TOP ═══ -->
+<button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
+
+<!-- ═══ HIRE NOTIFICATION ═══ -->
+<div id="hire-notif">
+  <div class="hn-icon">🚀</div>
+  <div style="flex:1;min-width:0;">
+    <div class="hn-title">Open to new opportunities!</div>
+    <div class="hn-sub"><a href="https://www.linkedin.com/in/prakash-kantamani/" target="_blank" style="color:var(--cyan)">Let's connect on LinkedIn →</a></div>
+    <div class="hn-actions">
+      <a href="https://www.linkedin.com/in/prakash-kantamani/" target="_blank"><button class="hn-yes">View Profile</button></a>
+      <button class="hn-dismiss" onclick="document.getElementById('hire-notif').classList.remove('show')">Maybe later</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ DEEP DIVE MODAL ═══ -->
+<div id="ddm" onclick="if(event.target===this)closeDive()">
+  <div class="ddm-window">
+    <div class="ddm-header">
+      <div>
+        <div class="ddm-htitle" id="ddm-title">Project Deep Dive</div>
+        <span class="ddm-badge" id="ddm-badge"></span>
+      </div>
+      <button class="ddm-close" onclick="closeDive()">✕</button>
+    </div>
+    <div class="ddm-body" id="ddm-body"></div>
+  </div>
+</div>
 
 <script>
 /* ── LOADER ── */
@@ -2260,6 +2605,164 @@ document.querySelectorAll('.contact-card').forEach(card => {
     });
   }
 });
+
+/* ── PROJECT FILTER ── */
+document.querySelectorAll('.pf-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.pf-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    document.querySelectorAll('.proj-card').forEach(card => {
+      if(f === 'all' || card.dataset.category === f){
+        card.classList.remove('filtered-out');
+      } else {
+        card.classList.add('filtered-out');
+      }
+    });
+  });
+});
+
+/* ── DEEP DIVE MODAL ── */
+const diveData = {
+  rag: {
+    title:'Financial RAG Chatbot',
+    badge:'Gen AI · LangChain · RAG',
+    badgeColor:'rgba(124,58,237,0.2)', badgeBorder:'rgba(124,58,237,0.4)', badgeText:'#a78bfa',
+    arch:'PDF Upload → PyMuPDF Loader → RecursiveCharacterTextSplitter\n  → ChromaDB Vector Store (MMR Retrieval)\n  → LangChain ConversationalRetrievalChain\n  → GPT-4o-mini → Answer + Source Citations',
+    highlights:[
+      '<strong>MMR Retrieval</strong> — Maximal Marginal Relevance reduces redundancy, improves answer diversity',
+      '<strong>Persistent ChromaDB</strong> — Vector store with cosine similarity, reloads without re-embedding on restart',
+      '<strong>Conversational memory</strong> — ConversationBufferWindowMemory maintains 5-turn rolling context window',
+      '<strong>Source citations</strong> — Every answer references source document + page number for auditability',
+      '<strong>Multi-PDF support</strong> — Upload and query across multiple financial documents simultaneously'
+    ],
+    stack:['LangChain','OpenAI GPT-4o','ChromaDB','PyMuPDF','Streamlit','Python','tiktoken','Sentence Transformers']
+  },
+  agent: {
+    title:'Data Analysis AI Agent',
+    badge:'Gen AI · LangChain Agents · ReAct',
+    badgeColor:'rgba(0,212,255,0.1)', badgeBorder:'rgba(0,212,255,0.3)', badgeText:'#00d4ff',
+    arch:'User Query → ReAct Planner (GPT-4o-mini)\n  → Tool Selection: dataset_info / pandas / stats / plot\n  → Execute Tool → Observe Result\n  → Repeat (max 10 iterations)\n  → Final Answer + Visualizations',
+    highlights:[
+      '<strong>ReAct Framework</strong> — Reason-Act-Observe loop enables fully autonomous multi-step analysis',
+      '<strong>4 Custom Tools</strong> — pandas_tool, stats_tool, plot_tool, dataset_info_tool built with @tool decorator',
+      '<strong>Safe sandbox</strong> — Code runs in isolated namespace with restricted builtins, no shell access',
+      '<strong>Auto-visualization</strong> — Generates bar, line, scatter, heatmap, box, pie charts from plain English',
+      '<strong>Iteration guard</strong> — Max 10 iterations prevents infinite loops on complex multi-step queries'
+    ],
+    stack:['LangChain','OpenAI GPT-4o','AgentExecutor','pandas','matplotlib','seaborn','Streamlit','ReAct']
+  },
+  portfolio: {
+    title:'Portfolio Management ML',
+    badge:'Machine Learning · Finance',
+    badgeColor:'rgba(59,130,246,0.1)', badgeBorder:'rgba(59,130,246,0.3)', badgeText:'#3b82f6',
+    arch:'Historical OHLCV Prices → Feature Engineering\n  → Ensemble Models (RF + XGBoost + LSTM)\n  → Return Predictions → Sharpe Ratio Optimization\n  → Optimal Portfolio Weights',
+    highlights:[
+      '<strong>Ensemble approach</strong> — Random Forest + XGBoost + LSTM combined for robust return prediction',
+      '<strong>Sharpe Ratio optimization</strong> — scipy.optimize with constraints for risk-adjusted portfolio weights',
+      '<strong>Feature engineering</strong> — RSI, MACD, Bollinger Bands, rolling volatility, momentum indicators',
+      '<strong>Walk-forward validation</strong> — Prevents lookahead bias with expanding-window backtesting',
+      '<strong>95%+ accuracy</strong> — On directional movement prediction across 50+ stock tickers'
+    ],
+    stack:['Python','scikit-learn','XGBoost','TensorFlow','pandas','NumPy','scipy','matplotlib']
+  },
+  bitcoin: {
+    title:'Bitcoin Price Forecasting',
+    badge:'Deep Learning · Time Series',
+    badgeColor:'rgba(255,107,53,0.1)', badgeBorder:'rgba(255,107,53,0.3)', badgeText:'#ff6b35',
+    arch:'OHLCV Data (yfinance) → Normalization\n  → Sliding Window (60-day lookback)\n  → LSTM Encoder → Attention Layer\n  → Dense Decoder → 7-day Price Forecast',
+    highlights:[
+      '<strong>LSTM + Attention</strong> — Attention mechanism highlights key temporal patterns in volatile data',
+      '<strong>Multi-step forecasting</strong> — Predicts full 7-day price trajectory, not just next-day close',
+      '<strong>60-day sliding window</strong> — Captures medium-term momentum and seasonal patterns',
+      '<strong>Dropout regularization</strong> — 0.2 dropout rate prevents overfitting on high-volatility crypto data',
+      '<strong>Ensemble smoothing</strong> — Median of 5 model runs reduces prediction variance significantly'
+    ],
+    stack:['Python','TensorFlow','Keras','LSTM','Attention','pandas','NumPy','yfinance','matplotlib']
+  },
+  bizloc: {
+    title:'Business Location Analysis',
+    badge:'Geospatial · ML · Analytics',
+    badgeColor:'rgba(6,255,165,0.1)', badgeBorder:'rgba(6,255,165,0.3)', badgeText:'#06ffa5',
+    arch:'Yelp API + Census Data + Foot Traffic\n  → Geospatial Feature Engineering\n  → K-Means + DBSCAN Clustering\n  → Composite Scoring Model\n  → Interactive Folium Map Output',
+    highlights:[
+      '<strong>Multi-source integration</strong> — Yelp API, US Census, foot-traffic, and competitor density combined',
+      '<strong>DBSCAN clustering</strong> — Density-based clustering identifies natural commercial hotspots',
+      '<strong>Composite scoring</strong> — Weighted score: competition density, foot traffic, demographics, accessibility',
+      '<strong>Interactive Folium maps</strong> — Choropleth visualizations make recommendations actionable',
+      '<strong>500+ ZIP codes</strong> — Comprehensive coverage across the entire state of Texas'
+    ],
+    stack:['Python','scikit-learn','pandas','geopandas','Folium','K-Means','DBSCAN','Yelp API','Census API']
+  }
+};
+
+function openDive(key){
+  const d = diveData[key];
+  if(!d) return;
+  document.getElementById('ddm-title').textContent = d.title;
+  const badge = document.getElementById('ddm-badge');
+  badge.textContent = d.badge;
+  badge.style.cssText += `;background:${d.badgeColor};border:1px solid ${d.badgeBorder};color:${d.badgeText};`;
+  const archLines = d.arch.split('\n').map(line => {
+    const t = line.trim();
+    return t.split('→').map((p,i) => i===0
+      ? `<span class="step">${p.trim()}</span>`
+      : `<span class="arr">→</span><span class="step">${p.trim()}</span>`
+    ).join('');
+  }).join('<br>');
+  const bulletsHTML = d.highlights.map(h => `<li>${h}</li>`).join('');
+  const stackHTML = d.stack.map(s => `<span class="ddm-stag">${s}</span>`).join('');
+  document.getElementById('ddm-body').innerHTML = `
+    <div class="ddm-sec">
+      <div class="ddm-sec-label">Architecture Flow</div>
+      <div class="ddm-arch">${archLines}</div>
+    </div>
+    <div class="ddm-sec">
+      <div class="ddm-sec-label">Technical Highlights</div>
+      <ul class="ddm-bullets">${bulletsHTML}</ul>
+    </div>
+    <div class="ddm-sec">
+      <div class="ddm-sec-label">Tech Stack</div>
+      <div class="ddm-stack">${stackHTML}</div>
+    </div>`;
+  document.getElementById('ddm').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDive(){
+  document.getElementById('ddm').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeDive(); });
+
+/* ── BACK TO TOP ── */
+const bttBtn = document.getElementById('btt');
+window.addEventListener('scroll', () => {
+  bttBtn.classList.toggle('show', window.scrollY > 500);
+}, {passive:true});
+
+/* ── HIRE NOTIFICATION (8s delay) ── */
+setTimeout(() => {
+  document.getElementById('hire-notif').classList.add('show');
+}, 8000);
+
+/* ── MOUSE EMOJI TRAIL ── */
+const trailEmojis = ['🤖','⚡','🧠','📊','✨'];
+let trailIdx = 0, lastTrail = 0;
+document.addEventListener('mousemove', e => {
+  const now = Date.now();
+  if(now - lastTrail < 120) return;
+  lastTrail = now;
+  const el = document.createElement('div');
+  el.className = 'emoji-trail';
+  el.textContent = trailEmojis[trailIdx % trailEmojis.length];
+  el.style.left = e.clientX + 'px';
+  el.style.top = e.clientY + 'px';
+  document.body.appendChild(el);
+  trailIdx++;
+  setTimeout(() => el.remove(), 900);
+}, {passive:true});
 </script>
 
 </body>
