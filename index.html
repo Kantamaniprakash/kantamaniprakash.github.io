@@ -1330,21 +1330,22 @@ footer span { color:var(--cyan); }
             <span class="exp-chip chip-past">Aug 2023 – Dec 2023</span>
           </div>
           <ul class="exp-bullets">
-            <li>Engineered <strong>production-grade semantic embeddings</strong> using Sentence Transformers and spaCy on Azure Databricks — built foundation for LLM-powered similarity search, accelerating data processing by <span class="highlight">40%</span>.</li>
-            <li>Developed <strong>NLP transformer pipelines</strong> for topic modeling and sentiment analysis on large-scale unstructured text datasets, enabling real-time customer intelligence.</li>
-            <li>Designed <strong>K-Means + PCA customer segmentation model</strong> identifying high-value customer clusters — drove <span class="highlight">25% increase</span> in targeted marketing campaign effectiveness.</li>
-            <li>Built <strong>deep learning models with PyTorch</strong> for object detection, NLP classification, and time-series forecasting — achieving <span class="highlight">85% validation accuracy</span>.</li>
-            <li>Optimized complex SQL queries via partitioning and materialized views, achieving <span class="highlight">35% reduction</span> in query execution time across large-scale pipelines.</li>
-            <li>Developed <strong>statistical anomaly detection models</strong> reducing false positives by <span class="highlight">40%</span> in production data quality monitoring.</li>
+            <li>Built a <strong>Retrieval-Augmented Generation (RAG) prototype</strong> for internal business Q&A — ingested company documents into a <strong>FAISS vector store</strong> using OpenAI embeddings, enabling natural language querying over structured enterprise data with <span class="highlight">&lt;2s retrieval latency</span>.</li>
+            <li>Engineered <strong>production-grade semantic embedding pipelines</strong> using <strong>Sentence Transformers (all-MiniLM-L6-v2)</strong> on Azure Databricks — built the vector search infrastructure powering an LLM-driven document similarity system, cutting processing time by <span class="highlight">40%</span>.</li>
+            <li>Developed <strong>LLM-augmented NLP pipelines</strong> leveraging transformer-based models for <strong>zero-shot text classification</strong>, topic modeling, and sentiment analysis across 10M+ customer records — replacing rule-based systems and enabling real-time customer intelligence.</li>
+            <li>Designed a <strong>K-Means + PCA customer segmentation model</strong> on top of dense embedding representations — drove a <span class="highlight">25% lift</span> in targeted marketing campaign effectiveness by identifying high-value customer clusters.</li>
+            <li>Built <strong>deep learning models with PyTorch</strong> spanning object detection, NLP multi-label classification, and time-series forecasting — achieving <span class="highlight">85% validation accuracy</span> across tasks.</li>
+            <li>Optimized complex SQL pipelines via partitioning, indexing, and materialized views, achieving a <span class="highlight">35% reduction</span> in query execution time on large-scale feature engineering workflows.</li>
           </ul>
           <div class="exp-stack">
+            <span class="stack-tag">RAG / FAISS</span>
+            <span class="stack-tag">OpenAI Embeddings</span>
             <span class="stack-tag">Sentence Transformers</span>
-            <span class="stack-tag">LLM Embeddings</span>
+            <span class="stack-tag">LangChain</span>
             <span class="stack-tag">Azure Databricks</span>
             <span class="stack-tag">PyTorch</span>
+            <span class="stack-tag">Transformer NLP</span>
             <span class="stack-tag">spaCy</span>
-            <span class="stack-tag">Scikit-learn</span>
-            <span class="stack-tag">NLP</span>
             <span class="stack-tag">SQL</span>
           </div>
         </div>
@@ -1363,20 +1364,21 @@ footer span { color:var(--cyan); }
             <span class="exp-chip chip-past">Jan 2020 – Dec 2021</span>
           </div>
           <ul class="exp-bullets">
-            <li>Built a <strong>CNN-based computer vision defect detection system</strong> deployed on production assembly lines — achieved <span class="highlight">95% classification accuracy</span>, cut false positives by 20%, and improved efficiency by 15%.</li>
-            <li>Developed an <strong>NLP text summarization model</strong> for automated report generation, reducing document review time by 30% and enabling faster business decision-making.</li>
-            <li>Designed and deployed a <strong>real-time monitoring dashboard</strong> using Python and Tableau that ingested live equipment telemetry, improving maintenance response time by <span class="highlight">15%</span>.</li>
-            <li>Implemented advanced <strong>hyperparameter optimization</strong> (RandomSearchCV, GridSearchCV, K-Fold CV) to improve ML model performance across classification and regression tasks.</li>
-            <li>Streamlined SQL data pipelines, reducing <strong>data preparation time for ML model training by 20%</strong> while maintaining data integrity.</li>
+            <li>Built a <strong>CNN-based computer vision defect detection pipeline</strong> using TensorFlow and deployed it as a real-time inference service on production assembly lines — achieved <span class="highlight">95% classification accuracy</span>, reduced false positives by 20%, and boosted production efficiency by 15%.</li>
+            <li>Designed an <strong>NLP text summarization system using a fine-tuned T5 transformer</strong> — automated production report generation from raw equipment logs, cutting manual document review time by <span class="highlight">30%</span> and serving as an early prototype for enterprise text AI.</li>
+            <li>Applied <strong>transfer learning with pre-trained BERT</strong> for intent classification and named entity recognition (NER) in equipment fault logs — reduced misclassification by 25% and accelerated root cause analysis workflows.</li>
+            <li>Deployed a <strong>real-time anomaly detection and monitoring dashboard</strong> (Python + Tableau) ingesting live equipment telemetry — integrated with an ML scoring API to surface early warning signals, improving maintenance response time by <span class="highlight">15%</span>.</li>
+            <li>Optimized ML model performance through systematic <strong>hyperparameter tuning</strong> (RandomSearchCV, GridSearchCV, K-Fold CV) and regularization techniques — improved F1 scores by up to 12% across classification pipelines.</li>
           </ul>
           <div class="exp-stack">
+            <span class="stack-tag">T5 / BERT (Fine-tuning)</span>
+            <span class="stack-tag">Transfer Learning</span>
             <span class="stack-tag">Computer Vision (CNN)</span>
-            <span class="stack-tag">NLP</span>
             <span class="stack-tag">TensorFlow</span>
             <span class="stack-tag">PyTorch</span>
+            <span class="stack-tag">NER / NLP</span>
             <span class="stack-tag">Tableau</span>
             <span class="stack-tag">Python</span>
-            <span class="stack-tag">SQL</span>
           </div>
         </div>
       </div>
@@ -1745,11 +1747,14 @@ footer span { color:var(--cyan); }
           <div class="edu-major">Business Analytics & Machine Learning</div>
           <div class="edu-school">🏛 The University of Texas at Dallas, TX</div>
           <div class="edu-chips">
+            <span class="edu-chip">Generative AI & LLMs</span>
             <span class="edu-chip">Machine Learning</span>
             <span class="edu-chip">Deep Learning</span>
+            <span class="edu-chip">Natural Language Processing</span>
             <span class="edu-chip">Big Data Analytics</span>
-            <span class="edu-chip">Business Intelligence</span>
+            <span class="edu-chip">AI Systems Design</span>
             <span class="edu-chip">Predictive Modeling</span>
+            <span class="edu-chip">Business Intelligence</span>
           </div>
         </div>
       </div>
@@ -1760,10 +1765,12 @@ footer span { color:var(--cyan); }
           <div class="edu-major">Computer Science & Engineering</div>
           <div class="edu-school">🏛 Vellore Institute of Technology, Amaravathi, India</div>
           <div class="edu-chips">
-            <span class="edu-chip">Data Structures & Algorithms</span>
+            <span class="edu-chip">AI &amp; Neural Networks</span>
+            <span class="edu-chip">Natural Language Processing</span>
+            <span class="edu-chip">Data Structures &amp; Algorithms</span>
             <span class="edu-chip">Database Systems</span>
-            <span class="edu-chip">AI Fundamentals</span>
             <span class="edu-chip">Software Engineering</span>
+            <span class="edu-chip">Machine Learning Fundamentals</span>
           </div>
           <div class="cert-pill">🏅 Google Data Analytics Certified</div>
         </div>
