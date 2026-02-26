@@ -811,6 +811,251 @@ footer span { color:var(--cyan); }
   #cursor-dot,#cursor-ring{display:none;}
   body{cursor:auto;}
 }
+
+/* ════════════════════════════════════════════════
+   AURORA BACKGROUND BLOBS
+════════════════════════════════════════════════ */
+.aurora-blob {
+  position:absolute; border-radius:50%;
+  filter:blur(80px); pointer-events:none; opacity:0.12;
+}
+.aurora-1 {
+  width:600px; height:450px;
+  background:radial-gradient(circle, #00d4ff 0%, transparent 70%);
+  top:-150px; left:-100px;
+  animation:aur1 14s ease-in-out infinite;
+}
+.aurora-2 {
+  width:700px; height:550px;
+  background:radial-gradient(circle, #7c3aed 0%, transparent 70%);
+  top:100px; right:-200px;
+  animation:aur2 18s ease-in-out infinite;
+}
+.aurora-3 {
+  width:500px; height:400px;
+  background:radial-gradient(circle, #06ffa5 0%, transparent 70%);
+  bottom:-100px; left:30%;
+  animation:aur3 11s ease-in-out infinite;
+  opacity:0.06;
+}
+@keyframes aur1 {
+  0%,100%{transform:translate(0,0) scale(1);}
+  33%{transform:translate(120px,60px) scale(1.15);}
+  66%{transform:translate(-60px,120px) scale(0.9);}
+}
+@keyframes aur2 {
+  0%,100%{transform:translate(0,0) scale(1);}
+  40%{transform:translate(-100px,80px) scale(1.2);}
+  70%{transform:translate(80px,-100px) scale(0.85);}
+}
+@keyframes aur3 {
+  0%,100%{transform:translate(0,0) scale(1);}
+  50%{transform:translate(-100px,-80px) scale(1.3);}
+}
+
+/* ════════════════════════════════════════════════
+   HIRE BUTTON SHAKE
+════════════════════════════════════════════════ */
+@keyframes shake-attention {
+  0%,100%{transform:translateY(-3px) rotate(0deg);}
+  10%{transform:translateY(-3px) rotate(-3deg);}
+  20%{transform:translateY(-3px) rotate(3deg);}
+  30%{transform:translateY(-3px) rotate(-3deg);}
+  40%{transform:translateY(-3px) rotate(3deg);}
+  50%{transform:translateY(-3px) rotate(-2deg);}
+  60%{transform:translateY(-3px) rotate(2deg);}
+  70%{transform:translateY(-3px) rotate(-1deg);}
+  80%{transform:translateY(-3px) rotate(1deg);}
+  90%{transform:translateY(-3px) rotate(0deg);}
+}
+.shake { animation:shake-attention 0.8s ease !important; }
+
+/* ════════════════════════════════════════════════
+   SKILL PROGRESS BARS
+════════════════════════════════════════════════ */
+.skill-bars-section { margin-top:3rem; }
+.skill-bars-title {
+  font-size:1rem; font-weight:700; color:var(--text1);
+  margin-bottom:1.5rem; display:flex; align-items:center; gap:0.75rem;
+}
+.skill-bars-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem 3rem; }
+.skill-bar-item { display:flex; flex-direction:column; gap:0.4rem; }
+.skill-bar-label {
+  display:flex; justify-content:space-between;
+  font-size:0.8rem; font-weight:600; color:var(--text2);
+}
+.skill-bar-label span:last-child {
+  font-family:'JetBrains Mono',monospace; color:var(--cyan); font-size:0.75rem;
+}
+.skill-bar-track {
+  height:5px; background:rgba(255,255,255,0.06);
+  border-radius:3px; overflow:hidden;
+}
+.skill-bar-fill {
+  height:100%; width:0; border-radius:3px;
+  background:var(--grad1);
+  box-shadow:0 0 8px rgba(0,212,255,0.4);
+  transition:width 1.2s cubic-bezier(0.4,0,0.2,1);
+}
+@media(max-width:640px){ .skill-bars-grid{grid-template-columns:1fr;} }
+
+/* ════════════════════════════════════════════════
+   FUN FACTS TICKER
+════════════════════════════════════════════════ */
+.fun-facts-wrap {
+  margin-top:1.5rem;
+  background:rgba(0,212,255,0.04);
+  border:1px solid rgba(0,212,255,0.1);
+  border-radius:12px; padding:0.9rem 1.2rem;
+  display:flex; align-items:center; gap:1rem;
+  overflow:hidden;
+}
+.fun-facts-label {
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.7rem; color:var(--cyan);
+  letter-spacing:2px; text-transform:uppercase;
+  white-space:nowrap; flex-shrink:0;
+  border-right:1px solid rgba(0,212,255,0.2); padding-right:1rem;
+}
+.fun-fact-text {
+  font-size:0.85rem; color:var(--text2);
+  transition:opacity 0.5s, transform 0.5s;
+  min-height:1.3em;
+}
+.fun-fact-text.fade-out { opacity:0; transform:translateY(-8px); }
+.fun-fact-text.fade-in  { opacity:1; transform:translateY(0); }
+
+/* ════════════════════════════════════════════════
+   CURRENTLY LEARNING CHIP
+════════════════════════════════════════════════ */
+.learning-chip {
+  display:inline-flex; align-items:center; gap:0.5rem;
+  background:rgba(247,37,133,0.07);
+  border:1px solid rgba(247,37,133,0.2);
+  color:var(--pink); padding:0.4rem 1rem;
+  border-radius:20px; font-size:0.78rem; font-weight:600;
+  margin-top:1rem;
+}
+.learning-dot {
+  width:7px; height:7px; background:var(--pink);
+  border-radius:50%; flex-shrink:0;
+  animation:blink 1.5s infinite;
+}
+
+/* ════════════════════════════════════════════════
+   INTERACTIVE TERMINAL INPUT
+════════════════════════════════════════════════ */
+.terminal-input-row {
+  display:flex; align-items:center; gap:0.5rem;
+  margin-top:0.5rem;
+}
+.terminal-input {
+  background:transparent; border:none; outline:none;
+  font-family:'JetBrains Mono',monospace; font-size:0.78rem;
+  color:var(--cyan); caret-color:var(--cyan); flex:1;
+}
+.terminal-output { margin-top:0.2rem; }
+.t-response { color:var(--text2); padding-left:1.2rem; font-size:0.76rem; line-height:1.8; }
+.t-response.success { color:var(--green); }
+.t-response.error { color:var(--orange); }
+
+/* ════════════════════════════════════════════════
+   EASTER EGG TERMINAL MODAL
+════════════════════════════════════════════════ */
+#egg-terminal {
+  position:fixed; inset:0; z-index:9990;
+  display:flex; align-items:center; justify-content:center;
+  background:rgba(4,8,15,0.92);
+  backdrop-filter:blur(12px);
+  opacity:0; visibility:hidden;
+  transition:opacity 0.3s, visibility 0.3s;
+}
+#egg-terminal.open { opacity:1; visibility:visible; }
+.egg-terminal-window {
+  width:min(700px,95vw);
+  background:var(--bg2);
+  border:1px solid rgba(0,212,255,0.3);
+  border-radius:16px; overflow:hidden;
+  box-shadow:0 0 80px rgba(0,212,255,0.15), var(--shadow-lg);
+  animation:terminal-drop 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
+}
+@keyframes terminal-drop {
+  from{transform:translateY(-40px) scale(0.96); opacity:0;}
+  to{transform:translateY(0) scale(1); opacity:1;}
+}
+.egg-terminal-bar {
+  background:var(--bg3); padding:0.8rem 1.2rem;
+  display:flex; align-items:center; gap:0.5rem;
+  border-bottom:1px solid var(--border);
+}
+.egg-close-btn {
+  margin-left:auto; background:none; border:none;
+  color:var(--text3); font-size:1rem; cursor:pointer;
+  transition:color 0.2s; padding:0 0.4rem;
+}
+.egg-close-btn:hover { color:var(--orange); }
+.egg-terminal-body {
+  padding:1.5rem; font-family:'JetBrains Mono',monospace;
+  font-size:0.8rem; line-height:2; max-height:420px; overflow-y:auto;
+}
+.egg-terminal-body::-webkit-scrollbar { width:3px; }
+.egg-terminal-body::-webkit-scrollbar-thumb { background:var(--cyan); }
+#egg-output { min-height:80px; }
+.egg-input-row {
+  display:flex; align-items:center; gap:0.6rem;
+  margin-top:0.5rem;
+  border-top:1px solid var(--border); padding-top:0.75rem;
+}
+.egg-input {
+  background:transparent; border:none; outline:none;
+  font-family:'JetBrains Mono',monospace; font-size:0.8rem;
+  color:var(--cyan); caret-color:var(--cyan); flex:1;
+}
+
+/* ════════════════════════════════════════════════
+   KONAMI OVERLAY
+════════════════════════════════════════════════ */
+#konami-overlay {
+  position:fixed; inset:0; z-index:9995;
+  display:flex; align-items:center; justify-content:center;
+  background:rgba(4,8,15,0.95);
+  backdrop-filter:blur(20px);
+  opacity:0; visibility:hidden;
+  transition:opacity 0.4s, visibility 0.4s;
+  text-align:center;
+}
+#konami-overlay.open { opacity:1; visibility:visible; }
+.konami-content { max-width:500px; }
+.konami-emoji { font-size:4rem; margin-bottom:1rem; animation:konami-bounce 0.5s ease infinite alternate; }
+@keyframes konami-bounce { from{transform:scale(1);} to{transform:scale(1.15);} }
+.konami-title {
+  font-size:2rem; font-weight:900; letter-spacing:-1px;
+  background:var(--grad1); -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent; background-clip:text;
+  margin-bottom:0.75rem;
+}
+.konami-sub { color:var(--text2); font-size:0.95rem; line-height:1.8; margin-bottom:2rem; }
+.konami-close {
+  background:none; border:1px solid var(--border2); color:var(--text2);
+  padding:0.6rem 1.5rem; border-radius:8px; cursor:pointer;
+  font-size:0.85rem; transition:all 0.2s;
+}
+.konami-close:hover { border-color:var(--cyan); color:var(--cyan); }
+
+/* ════════════════════════════════════════════════
+   TOAST NOTIFICATION
+════════════════════════════════════════════════ */
+#toast {
+  position:fixed; bottom:2rem; right:2rem; z-index:9999;
+  background:var(--bg3); border:1px solid rgba(6,255,165,0.3);
+  color:var(--green); padding:0.75rem 1.4rem; border-radius:10px;
+  font-size:0.85rem; font-weight:600;
+  box-shadow:0 8px 30px rgba(0,0,0,0.4), 0 0 20px rgba(6,255,165,0.1);
+  transform:translateY(80px); opacity:0;
+  transition:transform 0.4s cubic-bezier(0.175,0.885,0.32,1.275), opacity 0.4s;
+  pointer-events:none;
+}
+#toast.show { transform:translateY(0); opacity:1; }
 </style>
 </head>
 <body>
@@ -851,6 +1096,9 @@ footer span { color:var(--cyan); }
   <canvas id="particles-canvas"></canvas>
   <div class="hero-grid-bg"></div>
   <div class="hero-glow"></div>
+  <div class="aurora-blob aurora-1"></div>
+  <div class="aurora-blob aurora-2"></div>
+  <div class="aurora-blob aurora-3"></div>
   <div class="hero-content">
     <div class="hero-badge">
       <div class="hero-badge-dot"></div>
@@ -878,7 +1126,7 @@ footer span { color:var(--cyan); }
       <span class="hero-tag">🗄️ Vector DBs</span>
     </div>
     <div class="hero-btns">
-      <a href="https://github.com/kantamaniprakash" target="_blank" class="btn-glow">
+      <a href="https://github.com/kantamaniprakash" target="_blank" class="btn-glow" id="github-btn">
         ⚡ View My GitHub
       </a>
       <a href="https://www.linkedin.com/in/prakash-kantamani/" target="_blank" class="btn-outline">
@@ -921,6 +1169,14 @@ footer span { color:var(--cyan); }
             <div class="stat-lbl">% Model Accuracy</div>
           </div>
         </div>
+        <div class="learning-chip">
+          <div class="learning-dot"></div>
+          Currently learning: LLM Fine-tuning with LoRA &amp; QLoRA
+        </div>
+        <div class="fun-facts-wrap">
+          <div class="fun-facts-label">FUN FACT</div>
+          <div class="fun-fact-text" id="fun-fact-text">☕ Fueled by approximately 847 cups of coffee per year</div>
+        </div>
       </div>
       <div class="terminal-card reveal">
         <div class="terminal-bar">
@@ -929,20 +1185,13 @@ footer span { color:var(--cyan); }
           <div class="terminal-dot td-green"></div>
           <div class="terminal-title">prakash@ai-engineer ~ $</div>
         </div>
-        <div class="terminal-body">
-          <div class="t-line"><span class="t-prompt">❯</span><span class="t-cmd">cat profile.json</span></div>
-          <div class="t-line"><span class="t-out">{</span></div>
-          <div class="t-line"><span class="t-out">&nbsp; <span class="t-key">"role"</span>: <span class="t-val">"Gen AI Engineer"</span>,</span></div>
-          <div class="t-line"><span class="t-out">&nbsp; <span class="t-key">"location"</span>: <span class="t-val">"Richardson, TX"</span>,</span></div>
-          <div class="t-line"><span class="t-out">&nbsp; <span class="t-key">"focus"</span>: [</span></div>
-          <div class="t-line"><span class="t-out">&nbsp;&nbsp;&nbsp; <span class="t-val">"LLMs & RAG Systems"</span>,</span></div>
-          <div class="t-line"><span class="t-out">&nbsp;&nbsp;&nbsp; <span class="t-val">"AI Agents"</span>,</span></div>
-          <div class="t-line"><span class="t-out">&nbsp;&nbsp;&nbsp; <span class="t-val">"Data Science & ML"</span></span></div>
-          <div class="t-line"><span class="t-out">&nbsp; ],</span></div>
-          <div class="t-line"><span class="t-out">&nbsp; <span class="t-key">"stack"</span>: <span class="t-val">"LangChain+OpenAI+Snowflake"</span>,</span></div>
-          <div class="t-line"><span class="t-out">&nbsp; <span class="t-key">"available"</span>: <span class="t-val" style="color:var(--green)">true</span></span></div>
-          <div class="t-line"><span class="t-out">}</span></div>
-          <div class="t-line" style="margin-top:0.5rem"><span class="t-prompt">❯</span><span class="t-cmd t-comment"> # Open to exciting AI opportunities_</span></div>
+        <div class="terminal-body" id="interactive-terminal" style="max-height:280px;overflow-y:auto;">
+          <div class="t-line"><span class="t-prompt" style="color:var(--green)">❯</span><span class="t-cmd"> Welcome! Type <span style="color:var(--cyan)">help</span> to see available commands.</span></div>
+          <div id="terminal-output"></div>
+          <div class="terminal-input-row">
+            <span class="t-prompt" style="color:var(--green)">❯</span>
+            <input class="terminal-input" id="terminal-input" type="text" placeholder="type a command..." autocomplete="off" spellcheck="false" />
+          </div>
         </div>
       </div>
     </div>
@@ -1439,6 +1688,45 @@ footer span { color:var(--cyan); }
         </div>
       </div>
     </div>
+      <!-- Skill Progress Bars -->
+      <div class="skill-bars-section reveal">
+        <div class="skill-bars-title">⚡ Proficiency Levels</div>
+        <div class="skill-bars-grid" id="skill-bars-container">
+          <div class="skill-bar-item">
+            <div class="skill-bar-label"><span>Python</span><span>95%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="95"></div></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-label"><span>LangChain / LLMs</span><span>90%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-label"><span>RAG Systems</span><span>88%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-label"><span>PyTorch / Deep Learning</span><span>85%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-label"><span>SQL / Data Engineering</span><span>92%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="92"></div></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-label"><span>Snowflake / AWS</span><span>82%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="82"></div></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-label"><span>NLP / Text Analytics</span><span>87%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="87"></div></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-label"><span>Machine Learning</span><span>90%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1539,6 +1827,45 @@ footer span { color:var(--cyan); }
 <!-- ═══════════════════════════════════════════
      JAVASCRIPT
 ════════════════════════════════════════════ -->
+<!-- ═══ EASTER EGG TERMINAL ═══ -->
+<div id="egg-terminal">
+  <div class="egg-terminal-window">
+    <div class="egg-terminal-bar">
+      <div class="terminal-dot td-red"></div>
+      <div class="terminal-dot td-yellow"></div>
+      <div class="terminal-dot td-green"></div>
+      <div class="terminal-title">prakash@hire-me ~ $</div>
+      <button class="egg-close-btn" onclick="closeEggTerminal()">✕</button>
+    </div>
+    <div class="egg-terminal-body">
+      <div style="color:var(--green);margin-bottom:0.5rem;">🚀 Easter egg unlocked! You typed "hire" — great instincts.</div>
+      <div style="color:var(--text3);font-size:0.72rem;margin-bottom:1rem;">Type a command below. Try: <span style="color:var(--cyan)">help</span></div>
+      <div id="egg-output"></div>
+      <div class="egg-input-row">
+        <span style="color:var(--green)">❯</span>
+        <input class="egg-input" id="egg-input" type="text" placeholder="enter command..." autocomplete="off" spellcheck="false" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ KONAMI OVERLAY ═══ -->
+<div id="konami-overlay">
+  <div class="konami-content">
+    <div class="konami-emoji">🎮</div>
+    <div class="konami-title">CHEAT CODE ACTIVATED</div>
+    <div class="konami-sub">
+      Congratulations — you just proved you have better reflexes than most ML models.<br><br>
+      <strong style="color:var(--cyan)">Unlocked: Best Data Scientist in Texas 🤠</strong><br><br>
+      <span style="color:var(--text3);font-size:0.85rem;">↑↑↓↓←→←→BA — Classic. Now go hire Prakash.</span>
+    </div>
+    <button class="konami-close" onclick="document.getElementById('konami-overlay').classList.remove('open')">Close & Go Hire Me →</button>
+  </div>
+</div>
+
+<!-- ═══ TOAST ═══ -->
+<div id="toast">📋 Email copied to clipboard!</div>
+
 <script>
 /* ── LOADER ── */
 window.addEventListener('load', () => {
@@ -1721,6 +2048,210 @@ window.addEventListener('scroll', () => {
     const active = a.getAttribute('href')==='#'+cur;
     a.style.color = active ? 'var(--cyan)' : '';
   });
+});
+
+/* ── HIRE BUTTON SHAKE AFTER 20s ── */
+setTimeout(() => {
+  const hireBtn = document.querySelector('.nav-cta');
+  if(!hireBtn) return;
+  function doShake(){
+    hireBtn.classList.add('shake');
+    setTimeout(()=> hireBtn.classList.remove('shake'), 800);
+  }
+  doShake();
+  setInterval(doShake, 12000);
+}, 20000);
+
+/* ── SKILL PROGRESS BARS ── */
+const barObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
+        bar.style.width = bar.dataset.width + '%';
+      });
+      barObs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+const barsContainer = document.getElementById('skill-bars-container');
+if(barsContainer) barObs.observe(barsContainer);
+
+/* ── FUN FACTS ROTATOR ── */
+const funFacts = [
+  '☕ Fueled by approximately 847 cups of coffee per year',
+  '🤖 Has successfully argued with GPT-4 and won (twice)',
+  '📊 Has processed more data rows than stars in the Milky Way',
+  '⚡ Once reduced a 24-hour job to 30 minutes. Still celebrating.',
+  '🧠 Trained ML models before it was cool (circa 2020)',
+  '🎮 Knows the Konami code — try it on this page!',
+  '🔍 Can spot data leakage faster than a coffee break',
+  '🌙 Bugs only appear at 2am — confirmed by 4 years of research',
+  '🚀 Believes every problem is a data problem in disguise',
+  '💡 Has written more SQL queries than sentences in this bio'
+];
+let factIdx = 0;
+const factEl = document.getElementById('fun-fact-text');
+if(factEl){
+  setInterval(() => {
+    factEl.classList.add('fade-out');
+    setTimeout(() => {
+      factIdx = (factIdx + 1) % funFacts.length;
+      factEl.textContent = funFacts[factIdx];
+      factEl.classList.remove('fade-out');
+      factEl.classList.add('fade-in');
+      setTimeout(() => factEl.classList.remove('fade-in'), 500);
+    }, 500);
+  }, 4000);
+}
+
+/* ── INTERACTIVE TERMINAL (About section) ── */
+const termInput = document.getElementById('terminal-input');
+const termOutput = document.getElementById('terminal-output');
+const terminalCmds = {
+  help: () => `<span style="color:var(--cyan)">Available commands:</span><br>
+&nbsp; <span style="color:var(--green)">whoami</span> &nbsp;&nbsp;&nbsp; — Profile info<br>
+&nbsp; <span style="color:var(--green)">skills</span> &nbsp;&nbsp;&nbsp; — Tech stack<br>
+&nbsp; <span style="color:var(--green)">experience</span> — Work history<br>
+&nbsp; <span style="color:var(--green)">contact</span> &nbsp;&nbsp; — Get in touch<br>
+&nbsp; <span style="color:var(--green)">hire</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; — Best decision you'll make today<br>
+&nbsp; <span style="color:var(--green)">clear</span> &nbsp;&nbsp;&nbsp;&nbsp; — Clear terminal`,
+  whoami: () => `<span style="color:var(--text1)">Satya Sai Prakash Kantamani</span><br>
+Role: <span style="color:var(--cyan)">Gen AI Engineer & Data Scientist</span><br>
+Location: <span style="color:var(--text2)">Richardson, TX</span><br>
+MS: <span style="color:var(--text2)">Business Analytics & ML — UT Dallas</span><br>
+Status: <span style="color:var(--green)">✅ Open to opportunities</span>`,
+  skills: () => `<span style="color:var(--cyan)">Top Skills:</span><br>
+🤖 LangChain · OpenAI GPT-4 · RAG · LLM Agents<br>
+🧠 PyTorch · TensorFlow · Scikit-learn · XGBoost<br>
+☁️ Snowflake · AWS · Azure Databricks<br>
+💻 Python · R · SQL · pandas · NumPy`,
+  experience: () => `<span style="color:var(--cyan)">Work History:</span><br>
+▸ <span style="color:var(--green)">AAA National</span> — Data Scientist (2024–Present)<br>
+▸ <span style="color:var(--text1)">Imperium Data</span> — Data Analyst Intern (2023)<br>
+▸ <span style="color:var(--text1)">Skilalogy</span> — Data Analyst (2020–2021)`,
+  contact: () => `<span style="color:var(--cyan)">Let's connect:</span><br>
+📧 <a href="mailto:satyasai.kantamani@gmail.com" style="color:var(--cyan)">satyasai.kantamani@gmail.com</a><br>
+💼 <a href="https://www.linkedin.com/in/prakash-kantamani/" target="_blank" style="color:var(--cyan)">linkedin.com/in/prakash-kantamani</a><br>
+⚡ <a href="https://github.com/kantamaniprakash" target="_blank" style="color:var(--cyan)">github.com/kantamaniprakash</a>`,
+  hire: () => `<span style="color:var(--green)">🎉 Excellent choice!</span><br>
+Initiating hire sequence...<br>
+<span style="color:var(--text3)">▸ Loading 4 years of AI expertise... ✅</span><br>
+<span style="color:var(--text3)">▸ Packaging 240M+ rows of experience... ✅</span><br>
+<span style="color:var(--text3)">▸ Attaching LangChain superpowers... ✅</span><br>
+<span style="color:var(--green)">Redirecting to LinkedIn in 3s...</span>`,
+  clear: () => { termOutput.innerHTML = ''; return null; },
+};
+
+function runTermCmd(input, outputEl, isEgg=false){
+  const cmd = input.trim().toLowerCase();
+  const handler = terminalCmds[cmd];
+  if(!handler){
+    return `<span style="color:var(--orange)">Command not found: '${input}'. Type <span style="color:var(--cyan)">help</span> for commands.</span>`;
+  }
+  const result = handler();
+  if(cmd === 'hire' && !isEgg){
+    setTimeout(()=> window.open('https://www.linkedin.com/in/prakash-kantamani/','_blank'), 3000);
+  }
+  return result;
+}
+
+if(termInput){
+  termInput.addEventListener('keydown', e => {
+    if(e.key !== 'Enter') return;
+    const val = termInput.value.trim();
+    if(!val){ return; }
+    const row = document.createElement('div');
+    row.innerHTML = `<div class="t-line"><span style="color:var(--green)">❯</span> <span style="color:var(--cyan)">${val}</span></div>`;
+    termOutput.appendChild(row);
+    const result = runTermCmd(val, termOutput);
+    if(result !== null){
+      const out = document.createElement('div');
+      out.className = 't-response';
+      out.innerHTML = result;
+      termOutput.appendChild(out);
+    }
+    termInput.value = '';
+    const t = document.getElementById('interactive-terminal');
+    t.scrollTop = t.scrollHeight;
+  });
+}
+
+/* ── EASTER EGG TERMINAL ── */
+let eggBuffer = '';
+document.addEventListener('keydown', e => {
+  if(['INPUT','TEXTAREA'].includes(document.activeElement.tagName)) return;
+  eggBuffer = (eggBuffer + e.key).toLowerCase().slice(-4);
+  if(eggBuffer === 'hire'){
+    document.getElementById('egg-terminal').classList.add('open');
+    setTimeout(() => document.getElementById('egg-input').focus(), 100);
+  }
+});
+
+function closeEggTerminal(){
+  document.getElementById('egg-terminal').classList.remove('open');
+  document.getElementById('egg-output').innerHTML = '';
+}
+document.getElementById('egg-terminal').addEventListener('click', e => {
+  if(e.target === document.getElementById('egg-terminal')) closeEggTerminal();
+});
+
+const eggInput = document.getElementById('egg-input');
+const eggOutput = document.getElementById('egg-output');
+if(eggInput){
+  eggInput.addEventListener('keydown', e => {
+    if(e.key !== 'Enter') return;
+    const val = eggInput.value.trim();
+    if(!val) return;
+    const row = document.createElement('div');
+    row.innerHTML = `<div class="t-line"><span style="color:var(--green)">❯</span> <span style="color:var(--cyan)">${val}</span></div>`;
+    eggOutput.appendChild(row);
+    const result = runTermCmd(val, eggOutput, true);
+    if(val.toLowerCase() === 'hire'){
+      setTimeout(()=> window.open('https://www.linkedin.com/in/prakash-kantamani/','_blank'), 3000);
+    }
+    if(result !== null){
+      const out = document.createElement('div');
+      out.className = 't-response';
+      out.innerHTML = result;
+      eggOutput.appendChild(out);
+    }
+    eggInput.value = '';
+    const body = eggInput.closest('.egg-terminal-body');
+    body.scrollTop = body.scrollHeight;
+  });
+}
+
+/* ── KONAMI CODE ── */
+const konamiSeq = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+let konamiIdx = 0;
+document.addEventListener('keydown', e => {
+  if(e.key === konamiSeq[konamiIdx]){
+    konamiIdx++;
+    if(konamiIdx === konamiSeq.length){
+      document.getElementById('konami-overlay').classList.add('open');
+      konamiIdx = 0;
+    }
+  } else {
+    konamiIdx = 0;
+  }
+});
+
+/* ── COPY EMAIL TOAST ── */
+const toast = document.getElementById('toast');
+function showToast(msg){
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(()=> toast.classList.remove('show'), 2800);
+}
+document.querySelectorAll('.contact-card').forEach(card => {
+  if(card.href && card.href.startsWith('mailto:')){
+    card.addEventListener('click', e => {
+      e.preventDefault();
+      navigator.clipboard.writeText('satyasai.kantamani@gmail.com').then(() => {
+        showToast('📋 Email copied to clipboard!');
+      }).catch(()=> window.location.href = card.href);
+    });
+  }
 });
 </script>
 
