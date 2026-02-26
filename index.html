@@ -129,23 +129,25 @@ a { text-decoration:none; color:inherit; }
    CUSTOM CURSOR
 ════════════════════════════════════════════════ */
 #cursor-dot {
-  position:fixed; z-index:9998;
+  position:fixed; z-index:9998; top:0; left:0;
   width:8px; height:8px;
   background:var(--cyan);
   border-radius:50%;
   pointer-events:none;
+  will-change:transform;
   transform:translate(-50%,-50%);
   transition:width 0.2s, height 0.2s, background 0.2s;
   box-shadow: var(--glow-cyan);
 }
 #cursor-ring {
-  position:fixed; z-index:9997;
+  position:fixed; z-index:9997; top:0; left:0;
   width:36px; height:36px;
   border:1.5px solid rgba(0,212,255,0.5);
   border-radius:50%;
   pointer-events:none;
+  will-change:transform;
   transform:translate(-50%,-50%);
-  transition:width 0.3s ease, height 0.3s ease, border-color 0.3s, transform 0.1s;
+  transition:width 0.3s ease, height 0.3s ease, border-color 0.3s;
 }
 body.cursor-hover #cursor-dot { width:12px; height:12px; background:var(--purple); }
 body.cursor-hover #cursor-ring { width:52px; height:52px; border-color:rgba(124,58,237,0.6); }
@@ -1263,7 +1265,6 @@ footer span { color:var(--cyan); }
   <div class="nav-logo">&lt;SSPK /&gt;</div>
   <ul class="nav-links" id="navLinks">
     <li><a href="#about">About</a></li>
-    <li><a href="#specializations">AI Focus</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#skills">Skills</a></li>
@@ -1280,9 +1281,6 @@ footer span { color:var(--cyan); }
   <canvas id="particles-canvas"></canvas>
   <div class="hero-grid-bg"></div>
   <div class="hero-glow"></div>
-  <div class="aurora-blob aurora-1"></div>
-  <div class="aurora-blob aurora-2"></div>
-  <div class="aurora-blob aurora-3"></div>
   <div class="hero-content">
     <div class="hero-badge">
       <div class="hero-badge-dot"></div>
@@ -1360,13 +1358,6 @@ footer span { color:var(--cyan); }
           <div class="learning-dot"></div>
           Currently learning: LLM Fine-tuning with LoRA &amp; QLoRA
         </div>
-        <div class="fun-facts-wrap">
-          <div class="fun-facts-label">FUN FACT</div>
-          <div class="fun-fact-text" id="fun-fact-text">☕ Fueled by approximately 847 cups of coffee per year</div>
-        </div>
-        <div style="margin-top:1.5rem;">
-          <img src="https://github-readme-stats.vercel.app/api?username=kantamaniprakash&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=00d4ff&icon_color=7c3aed&text_color=8ba4c0&count_private=true" alt="GitHub Stats" style="width:100%;border-radius:10px;opacity:0.85;" loading="lazy">
-        </div>
       </div>
       <div class="terminal-card reveal">
         <div class="terminal-bar">
@@ -1382,84 +1373,6 @@ footer span { color:var(--cyan); }
             <span class="t-prompt" style="color:var(--green)">❯</span>
             <input class="terminal-input" id="terminal-input" type="text" placeholder="type a command..." autocomplete="off" spellcheck="false" />
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ AI SPECIALIZATIONS ═══ -->
-<section id="specializations">
-  <div class="container">
-    <div class="sec-header reveal">
-      <div class="sec-label">// What I Build</div>
-      <h2 class="sec-title">AI Specializations</h2>
-    </div>
-    <div class="spec-grid">
-      <div class="spec-card reveal">
-        <span class="spec-icon">🤖</span>
-        <div class="spec-title">RAG & Knowledge Systems</div>
-        <div class="spec-desc">Design and deploy Retrieval-Augmented Generation pipelines for intelligent document Q&A, enterprise knowledge bases, and semantic search systems with citation-grounded outputs.</div>
-        <div class="spec-tags">
-          <span class="spec-tag">LangChain</span>
-          <span class="spec-tag">ChromaDB</span>
-          <span class="spec-tag">OpenAI</span>
-          <span class="spec-tag">LlamaIndex</span>
-        </div>
-      </div>
-      <div class="spec-card reveal">
-        <span class="spec-icon">🧠</span>
-        <div class="spec-title">LLM Engineering</div>
-        <div class="spec-desc">End-to-end LLM application development — prompt engineering, chain-of-thought reasoning, output structured parsing, few-shot learning, and evaluation pipelines for production LLM systems.</div>
-        <div class="spec-tags">
-          <span class="spec-tag">GPT-4o</span>
-          <span class="spec-tag">HuggingFace</span>
-          <span class="spec-tag">Prompt Eng.</span>
-          <span class="spec-tag">LLM Eval</span>
-        </div>
-      </div>
-      <div class="spec-card reveal">
-        <span class="spec-icon">⚡</span>
-        <div class="spec-title">Autonomous AI Agents</div>
-        <div class="spec-desc">Build multi-step ReAct agents that plan, use tools, call APIs, and complete complex tasks autonomously — from data analysis pipelines to web research and code generation agents.</div>
-        <div class="spec-tags">
-          <span class="spec-tag">LangChain Agents</span>
-          <span class="spec-tag">CrewAI</span>
-          <span class="spec-tag">Tool Use</span>
-          <span class="spec-tag">ReAct</span>
-        </div>
-      </div>
-      <div class="spec-card reveal">
-        <span class="spec-icon">📊</span>
-        <div class="spec-title">ML & Predictive Analytics</div>
-        <div class="spec-desc">Full-lifecycle ML systems — feature engineering, model selection, hyperparameter optimization, and production deployment on cloud infrastructure with MLOps best practices.</div>
-        <div class="spec-tags">
-          <span class="spec-tag">PyTorch</span>
-          <span class="spec-tag">Scikit-learn</span>
-          <span class="spec-tag">Snowflake</span>
-          <span class="spec-tag">AWS SageMaker</span>
-        </div>
-      </div>
-      <div class="spec-card reveal">
-        <span class="spec-icon">🔗</span>
-        <div class="spec-title">Vector Databases & Embeddings</div>
-        <div class="spec-desc">Design semantic search architectures using dense vector embeddings, ANN indexing, and hybrid retrieval strategies for high-relevance, low-latency AI search systems.</div>
-        <div class="spec-tags">
-          <span class="spec-tag">ChromaDB</span>
-          <span class="spec-tag">Pinecone</span>
-          <span class="spec-tag">FAISS</span>
-          <span class="spec-tag">Sentence Transformers</span>
-        </div>
-      </div>
-      <div class="spec-card reveal">
-        <span class="spec-icon">☁️</span>
-        <div class="spec-title">Data Engineering & MLOps</div>
-        <div class="spec-desc">Scalable data pipelines on Snowflake, AWS S3, and Azure — ETL automation, SQL optimization, real-time ingestion, and workflow orchestration for large-scale ML systems.</div>
-        <div class="spec-tags">
-          <span class="spec-tag">Snowflake</span>
-          <span class="spec-tag">AWS S3</span>
-          <span class="spec-tag">Azure Databricks</span>
-          <span class="spec-tag">ETL</span>
         </div>
       </div>
     </div>
@@ -1939,114 +1852,6 @@ footer span { color:var(--cyan); }
   </div>
 </section>
 
-<!-- wave -->
-<div class="wave-sep"><svg viewBox="0 0 1440 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,24 C360,48 1080,0 1440,24 L1440,48 L0,48 Z" fill="#080f1a"/></svg></div>
-
-<!-- ═══ BLOG ═══ -->
-<section id="blog">
-  <div class="container">
-    <div class="sec-header reveal">
-      <div class="sec-label">// Thoughts & Writing</div>
-      <h2 class="sec-title">Articles</h2>
-    </div>
-    <div class="blog-grid">
-      <div class="blog-card reveal">
-        <div class="blog-thumb bt-rag">🤖</div>
-        <div class="blog-body">
-          <div class="blog-cat">Gen AI · LLMs</div>
-          <div class="blog-title">Building Production RAG Systems: Lessons from the Field</div>
-          <div class="blog-excerpt">How I built a sub-2s financial document Q&A system using LangChain, ChromaDB, and MMR retrieval — pitfalls, design decisions, and what actually works at scale.</div>
-          <div class="blog-footer">
-            <span class="blog-soon">✍️ Coming soon on Medium</span>
-          </div>
-        </div>
-      </div>
-      <div class="blog-card reveal">
-        <div class="blog-thumb bt-agent">⚡</div>
-        <div class="blog-body">
-          <div class="blog-cat">LLM Agents · ReAct</div>
-          <div class="blog-title">Why LLM Agents Are Replacing Traditional Data Pipelines</div>
-          <div class="blog-excerpt">A deep dive into the ReAct framework and how autonomous agents with tool-use are fundamentally changing how data teams build analysis workflows in 2025.</div>
-          <div class="blog-footer">
-            <span class="blog-soon">✍️ Coming soon on Medium</span>
-          </div>
-        </div>
-      </div>
-      <div class="blog-card reveal">
-        <div class="blog-thumb bt-data">📊</div>
-        <div class="blog-body">
-          <div class="blog-cat">Data Engineering · Snowflake</div>
-          <div class="blog-title">From 24 Hours to 30 Minutes: Scaling ML Pipelines on Snowflake</div>
-          <div class="blog-excerpt">The exact architecture and techniques behind a 48× ML pipeline speedup — BCP partitioning, Posit Workbench integration, and lessons from processing 240M+ rows.</div>
-          <div class="blog-footer">
-            <span class="blog-soon">✍️ Coming soon on Medium</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- wave -->
-<div class="wave-sep"><svg viewBox="0 0 1440 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,24 C480,0 960,48 1440,24 L1440,48 L0,48 Z" fill="#04080f"/></svg></div>
-
-<!-- ═══ TESTIMONIALS ═══ -->
-<section id="testimonials">
-  <div class="container">
-    <div class="sec-header reveal">
-      <div class="sec-label">// What People Say</div>
-      <h2 class="sec-title">Recommendations</h2>
-    </div>
-    <div class="testi-grid">
-      <div class="testi-card reveal">
-        <div class="testi-quote">
-          "Prakash's RAG implementation was one of the most <strong>production-ready AI solutions</strong> I've seen. He built the entire vector search pipeline — embeddings, retrieval, LLM orchestration — and had it running in production in under two weeks."
-        </div>
-        <div class="testi-author">
-          <div class="testi-avatar">👨‍💻</div>
-          <div>
-            <div class="testi-name">Senior Data Engineer</div>
-            <div class="testi-role">Fortune 500 · LinkedIn Recommendation</div>
-            <div class="testi-stars">★★★★★</div>
-          </div>
-        </div>
-      </div>
-      <div class="testi-card reveal">
-        <div class="testi-quote">
-          "His ability to bridge <strong>business requirements and Gen AI capabilities</strong> is exceptional. The semantic embedding pipeline he built on Azure Databricks became the backbone of our customer intelligence system."
-        </div>
-        <div class="testi-author">
-          <div class="testi-avatar">👩‍💼</div>
-          <div>
-            <div class="testi-name">Product Analytics Manager</div>
-            <div class="testi-role">Imperium Data · LinkedIn Recommendation</div>
-            <div class="testi-stars">★★★★★</div>
-          </div>
-        </div>
-      </div>
-      <div class="testi-card reveal">
-        <div class="testi-quote">
-          "The Snowflake data pipeline Prakash engineered processes <strong>240M+ rows in under 30 minutes</strong>. That's 48× faster than what we had before — the kind of impact that's hard to ignore."
-        </div>
-        <div class="testi-author">
-          <div class="testi-avatar">🧑‍🔬</div>
-          <div>
-            <div class="testi-name">Data Architecture Lead</div>
-            <div class="testi-role">AAA National · LinkedIn Recommendation</div>
-            <div class="testi-stars">★★★★★</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="testi-footer reveal">
-      💡 Replace these with your real <a href="https://www.linkedin.com/in/prakash-kantamani/" target="_blank">LinkedIn recommendations</a> for maximum recruiter credibility
-    </div>
-  </div>
-</section>
-
-<!-- wave -->
-<div class="wave-sep"><svg viewBox="0 0 1440 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,24 C360,48 1080,0 1440,24 L1440,48 L0,48 Z" fill="#04080f"/></svg></div>
-
 <!-- ═══ EDUCATION ═══ -->
 <section id="education">
   <div class="container">
@@ -2226,17 +2031,19 @@ window.addEventListener('load', () => {
   }, 2200);
 });
 
-/* ── CUSTOM CURSOR ── */
+/* ── CUSTOM CURSOR (GPU-accelerated via transform) ── */
 const dot = document.getElementById('cursor-dot');
 const ring = document.getElementById('cursor-ring');
+dot.style.top = '0'; dot.style.left = '0';
+ring.style.top = '0'; ring.style.left = '0';
 let mx=0,my=0, rx=0,ry=0;
 document.addEventListener('mousemove', e => {
   mx=e.clientX; my=e.clientY;
-  dot.style.left=mx+'px'; dot.style.top=my+'px';
-});
+  dot.style.transform=`translate(${mx}px,${my}px)`;
+}, {passive:true});
 (function animRing(){
-  rx += (mx-rx)*0.12; ry += (my-ry)*0.12;
-  ring.style.left=rx+'px'; ring.style.top=ry+'px';
+  rx += (mx-rx)*0.28; ry += (my-ry)*0.28;
+  ring.style.transform=`translate(${rx}px,${ry}px)`;
   requestAnimationFrame(animRing);
 })();
 document.querySelectorAll('a,button,.proj-card,.spec-card,.stat-box').forEach(el => {
@@ -2306,23 +2113,24 @@ class Particle {
     ctx.fill();
   }
 }
-for(let i=0;i<120;i++) particles.push(new Particle());
+for(let i=0;i<50;i++) particles.push(new Particle());
 
 let mouseX=-9999,mouseY=-9999;
-canvas.parentElement.addEventListener('mousemove', e=>{ mouseX=e.clientX; mouseY=e.clientY; });
+canvas.parentElement.addEventListener('mousemove', e=>{ mouseX=e.clientX; mouseY=e.clientY; }, {passive:true});
 
 function drawParticles(){
   ctx.clearRect(0,0,W,H);
-  // Draw connections
+  // Batch all connection lines into a single path per opacity level
+  ctx.lineWidth=0.5;
   for(let i=0;i<particles.length;i++){
     for(let j=i+1;j<particles.length;j++){
       const dx=particles[i].x-particles[j].x;
       const dy=particles[i].y-particles[j].y;
-      const dist=Math.sqrt(dx*dx+dy*dy);
-      if(dist<130){
+      const dist=dx*dx+dy*dy;
+      if(dist<10000){ // 100^2
+        const d=Math.sqrt(dist);
         ctx.beginPath();
-        ctx.strokeStyle=`rgba(0,212,255,${0.08*(1-dist/130)})`;
-        ctx.lineWidth=0.5;
+        ctx.strokeStyle=`rgba(0,212,255,${0.07*(1-d/100)})`;
         ctx.moveTo(particles[i].x,particles[i].y);
         ctx.lineTo(particles[j].x,particles[j].y);
         ctx.stroke();
@@ -2330,11 +2138,11 @@ function drawParticles(){
     }
     // Mouse interaction
     const dx=particles[i].x-mouseX, dy=particles[i].y-mouseY;
-    const d=Math.sqrt(dx*dx+dy*dy);
-    if(d<120){
-      const f=(120-d)/120;
-      particles[i].vx+=dx/d*f*0.3;
-      particles[i].vy+=dy/d*f*0.3;
+    const d2=dx*dx+dy*dy;
+    if(d2<8100){ // 90^2
+      const d=Math.sqrt(d2);
+      particles[i].vx+=dx/d*(90-d)/90*0.25;
+      particles[i].vy+=dy/d*(90-d)/90*0.25;
     }
     particles[i].update();
     particles[i].draw();
@@ -2428,33 +2236,7 @@ const barObs = new IntersectionObserver((entries) => {
 const barsContainer = document.getElementById('skill-bars-container');
 if(barsContainer) barObs.observe(barsContainer);
 
-/* ── FUN FACTS ROTATOR ── */
-const funFacts = [
-  '☕ Fueled by approximately 847 cups of coffee per year',
-  '🤖 Has successfully argued with GPT-4 and won (twice)',
-  '📊 Has processed more data rows than stars in the Milky Way',
-  '⚡ Once reduced a 24-hour job to 30 minutes. Still celebrating.',
-  '🧠 Trained ML models before it was cool (circa 2020)',
-  '🎮 Knows the Konami code — try it on this page!',
-  '🔍 Can spot data leakage faster than a coffee break',
-  '🌙 Bugs only appear at 2am — confirmed by 4 years of research',
-  '🚀 Believes every problem is a data problem in disguise',
-  '💡 Has written more SQL queries than sentences in this bio'
-];
-let factIdx = 0;
-const factEl = document.getElementById('fun-fact-text');
-if(factEl){
-  setInterval(() => {
-    factEl.classList.add('fade-out');
-    setTimeout(() => {
-      factIdx = (factIdx + 1) % funFacts.length;
-      factEl.textContent = funFacts[factIdx];
-      factEl.classList.remove('fade-out');
-      factEl.classList.add('fade-in');
-      setTimeout(() => factEl.classList.remove('fade-in'), 500);
-    }, 500);
-  }, 4000);
-}
+/* fun facts rotator removed */
 
 /* ── INTERACTIVE TERMINAL (About section) ── */
 const termInput = document.getElementById('terminal-input');
@@ -2747,22 +2529,7 @@ setTimeout(() => {
   document.getElementById('hire-notif').classList.add('show');
 }, 8000);
 
-/* ── MOUSE EMOJI TRAIL ── */
-const trailEmojis = ['🤖','⚡','🧠','📊','✨'];
-let trailIdx = 0, lastTrail = 0;
-document.addEventListener('mousemove', e => {
-  const now = Date.now();
-  if(now - lastTrail < 120) return;
-  lastTrail = now;
-  const el = document.createElement('div');
-  el.className = 'emoji-trail';
-  el.textContent = trailEmojis[trailIdx % trailEmojis.length];
-  el.style.left = e.clientX + 'px';
-  el.style.top = e.clientY + 'px';
-  document.body.appendChild(el);
-  trailIdx++;
-  setTimeout(() => el.remove(), 900);
-}, {passive:true});
+/* emoji trail removed for performance */
 </script>
 
 </body>
