@@ -2243,7 +2243,7 @@ document.querySelectorAll('[data-count]').forEach(el => counterObs.observe(el));
       stats: [
         { num:()=> daysSince(ML_START).toLocaleString(), lbl:'Days in ML'          },
         { num:()=> dallasTime(),                         lbl:'⏰ Dallas Right Now'  },
-        { num:()=> (daysSince(ML_START)*3).toLocaleString(), lbl:'☕ Coffees (est.)' },
+        { num:()=> Math.floor(daysSince(ML_START)*8).toLocaleString(), lbl:'ML Practice Hours' },
       ]
     },
     {
