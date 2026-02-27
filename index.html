@@ -492,6 +492,12 @@ section { padding:6rem 2rem; }
   line-height:1;
 }
 .stat-lbl { font-size:0.72rem; color:var(--text3); margin-top:0.4rem; letter-spacing:1px; text-transform:uppercase; }
+.stats-row { transition:opacity 0.35s ease, transform 0.35s ease; }
+.stats-row.stats-fading { opacity:0; transform:translateY(8px); }
+.stat-indicators { display:flex; gap:5px; justify-content:center; margin-top:0.9rem; }
+.si-dot { height:6px; width:6px; border-radius:3px; background:var(--border1); transition:width 0.4s ease, background 0.4s ease; cursor:default; }
+.si-dot.active { width:20px; background:var(--cyan); box-shadow:0 0 8px rgba(0,212,255,0.4); }
+.stat-set-tag { text-align:center; font-size:0.65rem; letter-spacing:2px; text-transform:uppercase; color:var(--text3); margin-top:0.5rem; transition:opacity 0.35s ease; }
 /* Terminal card */
 .terminal-card {
   background:var(--bg2);
@@ -1336,19 +1342,26 @@ footer span { color:var(--cyan); }
         <p>I'm a <strong>Gen AI Engineer & Data Scientist</strong> with 4+ years of experience building intelligent systems that bridge cutting-edge AI research and real-world business impact.</p>
         <p>My expertise spans the full AI stack — from architecting <strong class="highlight">RAG pipelines</strong> with LangChain and vector databases, to deploying <strong>autonomous LLM agents</strong>, fine-tuning transformer models, and building high-throughput ML pipelines on <strong>AWS and Snowflake</strong>.</p>
         <p>Currently at <strong>AAA National</strong>, where I engineered a data platform handling <strong class="highlight">240M+ rows</strong> and cut model runtime from 24 hours to 30 minutes. I hold an <strong>MS in Business Analytics & ML</strong> from UT Dallas.</p>
-        <div class="stats-row">
+        <div class="stats-row" id="stats-row">
           <div class="stat-box">
-            <div class="stat-num" data-count="240" data-suffix="M+">0</div>
-            <div class="stat-lbl">Rows in Production</div>
+            <div class="stat-num" id="sn0">240M+</div>
+            <div class="stat-lbl" id="sl0">Rows in Production</div>
           </div>
           <div class="stat-box">
-            <div class="stat-num" data-count="48" data-suffix="×">0</div>
-            <div class="stat-lbl">Pipeline Speedup</div>
+            <div class="stat-num" id="sn1">48×</div>
+            <div class="stat-lbl" id="sl1">Pipeline Speedup</div>
           </div>
           <div class="stat-box">
-            <div class="stat-num" data-count="68" data-suffix="h">0</div>
-            <div class="stat-lbl">Early Risk Warning</div>
+            <div class="stat-num" id="sn2">68h</div>
+            <div class="stat-lbl" id="sl2">Early Risk Warning</div>
           </div>
+        </div>
+        <div class="stat-set-tag" id="stat-set-tag">AT SCALE</div>
+        <div class="stat-indicators">
+          <span class="si-dot active"></span>
+          <span class="si-dot"></span>
+          <span class="si-dot"></span>
+          <span class="si-dot"></span>
         </div>
         <div class="learning-chip">
           <div class="learning-dot"></div>
@@ -2209,6 +2222,73 @@ const counterObs = new IntersectionObserver((entries) => {
   });
 }, { threshold:0.5 });
 document.querySelectorAll('[data-count]').forEach(el => counterObs.observe(el));
+
+/* ── ROTATING STATS ── */
+(function(){
+  const ML_START = new Date('2021-01-01');
+  function daysSince(d){ return Math.floor((Date.now()-d)/86400000); }
+  function dallasTime(){ return new Date().toLocaleTimeString('en-US',{timeZone:'America/Chicago',hour:'numeric',minute:'2-digit'}); }
+
+  const sets = [
+    {
+      tag: 'AT SCALE',
+      stats: [
+        { num:'240M+',  lbl:'Rows in Production' },
+        { num:'48×',    lbl:'Pipeline Speedup'   },
+        { num:'68h',    lbl:'Early Risk Warning'  },
+      ]
+    },
+    {
+      tag: 'RIGHT NOW',
+      stats: [
+        { num:()=> daysSince(ML_START).toLocaleString(), lbl:'Days in ML'          },
+        { num:()=> dallasTime(),                         lbl:'⏰ Dallas Right Now'  },
+        { num:()=> (daysSince(ML_START)*3).toLocaleString(), lbl:'☕ Coffees (est.)' },
+      ]
+    },
+    {
+      tag: 'THE ARSENAL',
+      stats: [
+        { num:'6',   lbl:'AI Systems Built'       },
+        { num:'50K', lbl:'Monte Carlo Sims'        },
+        { num:'27',  lbl:'ML Features Engineered'  },
+      ]
+    },
+    {
+      tag: 'BUSINESS IMPACT',
+      stats: [
+        { num:'74%',  lbl:'Stockout Reduction'   },
+        { num:'91%',  lbl:'Analyst Time Saved'   },
+        { num:'$2M+', lbl:'Risk Quantified'       },
+      ]
+    },
+  ];
+
+  let cur = 0;
+  const row  = document.getElementById('stats-row');
+  const tag  = document.getElementById('stat-set-tag');
+  const dots = document.querySelectorAll('.si-dot');
+  const nums = [0,1,2].map(i => document.getElementById('sn'+i));
+  const lbls = [0,1,2].map(i => document.getElementById('sl'+i));
+
+  function resolve(v){ return typeof v==='function' ? v() : v; }
+
+  function rotate(){
+    row.classList.add('stats-fading');
+    tag.style.opacity = '0';
+    setTimeout(()=>{
+      cur = (cur+1) % sets.length;
+      const s = sets[cur];
+      s.stats.forEach((st,i)=>{ nums[i].textContent=resolve(st.num); lbls[i].textContent=st.lbl; });
+      dots.forEach((d,i)=>d.classList.toggle('active', i===cur));
+      tag.textContent = s.tag;
+      row.classList.remove('stats-fading');
+      tag.style.opacity = '1';
+    }, 380);
+  }
+
+  setInterval(rotate, 4000);
+})();
 
 /* ── 3D CARD TILT ── */
 document.querySelectorAll('.proj-card,.spec-card').forEach(card => {
