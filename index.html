@@ -223,6 +223,53 @@ nav.scrolled { padding:0.75rem 3rem; background:rgba(4,8,15,0.95); }
   position:relative; overflow:hidden;
   padding:7rem 2rem 4rem;
 }
+/* ── Full-page animated canvas ── */
+#bg-canvas {
+  position:fixed; inset:0; z-index:-2;
+  width:100%; height:100%;
+  pointer-events:none;
+}
+/* ── Floating aurora blobs (CSS, GPU-composited) ── */
+#aurora-wrap {
+  position:fixed; inset:0; z-index:-1;
+  pointer-events:none; overflow:hidden;
+}
+.aur {
+  position:absolute; border-radius:50%;
+  filter:blur(120px); will-change:transform;
+}
+.aur-1 {
+  width:clamp(350px,45vw,700px); height:clamp(350px,45vw,700px);
+  background:radial-gradient(circle, rgba(0,212,255,0.08) 0%, transparent 70%);
+  top:-10%; left:-8%;
+  animation:aur-drift-1 26s ease-in-out infinite;
+}
+.aur-2 {
+  width:clamp(400px,50vw,800px); height:clamp(400px,50vw,800px);
+  background:radial-gradient(circle, rgba(124,58,237,0.06) 0%, transparent 70%);
+  top:25%; right:-12%;
+  animation:aur-drift-2 32s ease-in-out infinite;
+}
+.aur-3 {
+  width:clamp(300px,35vw,550px); height:clamp(300px,35vw,550px);
+  background:radial-gradient(circle, rgba(6,255,165,0.04) 0%, transparent 70%);
+  bottom:0%; left:25%;
+  animation:aur-drift-3 24s ease-in-out infinite;
+}
+@keyframes aur-drift-1 {
+  0%,100%{transform:translate(0,0);}
+  33%{transform:translate(6vw,8vh);}
+  66%{transform:translate(-3vw,14vh);}
+}
+@keyframes aur-drift-2 {
+  0%,100%{transform:translate(0,0) scale(1);}
+  50%{transform:translate(-8vw,6vh) scale(1.06);}
+}
+@keyframes aur-drift-3 {
+  0%,100%{transform:translate(0,0);}
+  40%{transform:translate(5vw,-8vh);}
+  80%{transform:translate(-6vw,-3vh);}
+}
 .hero-grid-bg {
   position:absolute; inset:0;
   background-image:
@@ -1216,6 +1263,14 @@ body::after {
 </head>
 <body>
 
+<!-- ═══ ANIMATED BACKGROUND ═══ -->
+<canvas id="bg-canvas"></canvas>
+<div id="aurora-wrap">
+  <div class="aur aur-1"></div>
+  <div class="aur aur-2"></div>
+  <div class="aur aur-3"></div>
+</div>
+
 <!-- ═══ LOADER ═══ -->
 <div id="loader">
   <div class="loader-logo">PRAKASH.K</div>
@@ -2030,6 +2085,149 @@ body::after {
 </div>
 
 <script>
+/* ═══════════════════════════════════════════════════════════
+   OPTIMIZED PARTICLE NETWORK — Batched draws, 60fps
+   ═══════════════════════════════════════════════════════════ */
+(function(){
+  const c = document.getElementById('bg-canvas');
+  const gl = c.getContext('2d');
+  let W, H, dpr;
+  const isMobile = matchMedia('(max-width:768px)').matches;
+  const COUNT = isMobile ? 35 : 60;
+  const LINK_DIST = isMobile ? 110 : 140;
+  const LINK_SQ = LINK_DIST * LINK_DIST;
+  const MOUSE_R = 160;
+  const MOUSE_SQ = MOUSE_R * MOUSE_R;
+  let mxR = -9999, myR = -9999; /* real coords */
+
+  function resize(){
+    dpr = Math.min(devicePixelRatio || 1, 2);
+    W = innerWidth; H = innerHeight;
+    c.width = W * dpr; c.height = H * dpr;
+    c.style.width = W + 'px'; c.style.height = H + 'px';
+    gl.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  /* ── Particles stored as flat typed arrays for cache-friendly iteration ── */
+  const px = new Float32Array(COUNT);
+  const py = new Float32Array(COUNT);
+  const vx = new Float32Array(COUNT);
+  const vy = new Float32Array(COUNT);
+  const rad = new Float32Array(COUNT);
+  const alpha = new Float32Array(COUNT);
+
+  function init(){
+    resize();
+    for(let i = 0; i < COUNT; i++){
+      px[i] = Math.random() * W;
+      py[i] = Math.random() * H;
+      vx[i] = (Math.random() - 0.5) * 0.35;
+      vy[i] = (Math.random() - 0.5) * 0.35;
+      rad[i] = Math.random() * 1.4 + 0.5;
+      alpha[i] = Math.random() * 0.4 + 0.15;
+    }
+  }
+
+  document.addEventListener('mousemove', e => { mxR = e.clientX; myR = e.clientY; }, {passive:true});
+  document.addEventListener('mouseleave', () => { mxR = -9999; myR = -9999; });
+
+  function frame(){
+    requestAnimationFrame(frame);
+    gl.clearRect(0, 0, W, H);
+
+    /* ── Update positions ── */
+    for(let i = 0; i < COUNT; i++){
+      px[i] += vx[i]; py[i] += vy[i];
+      if(px[i] < 0 || px[i] > W) vx[i] *= -1;
+      if(py[i] < 0 || py[i] > H) vy[i] *= -1;
+      /* Mouse repel */
+      const dmx = px[i] - mxR, dmy = py[i] - myR;
+      const md2 = dmx * dmx + dmy * dmy;
+      if(md2 < MOUSE_SQ && md2 > 1){
+        const f = (1 - md2 / MOUSE_SQ) * 0.15;
+        const md = Math.sqrt(md2);
+        vx[i] += (dmx / md) * f;
+        vy[i] += (dmy / md) * f;
+      }
+      /* Clamp velocity */
+      const spd = vx[i]*vx[i] + vy[i]*vy[i];
+      if(spd > 1){ const s = 1/Math.sqrt(spd); vx[i]*=s; vy[i]*=s; }
+    }
+
+    /* ── Draw connection lines — ONE path, grouped by opacity bucket ── */
+    const buckets = [[], [], [], []]; /* 4 opacity bands */
+    for(let i = 0; i < COUNT; i++){
+      for(let j = i + 1; j < COUNT; j++){
+        const dx = px[i] - px[j], dy = py[i] - py[j];
+        const d2 = dx * dx + dy * dy;
+        if(d2 < LINK_SQ){
+          const t = 1 - d2 / LINK_SQ; /* 0..1 */
+          const b = (t * 3.99) | 0; /* bucket 0-3 */
+          buckets[b].push(i, j);
+        }
+      }
+    }
+    const opacities = [0.015, 0.035, 0.06, 0.1];
+    for(let b = 0; b < 4; b++){
+      const arr = buckets[b];
+      if(!arr.length) continue;
+      gl.beginPath();
+      for(let k = 0; k < arr.length; k += 2){
+        gl.moveTo(px[arr[k]], py[arr[k]]);
+        gl.lineTo(px[arr[k+1]], py[arr[k+1]]);
+      }
+      gl.strokeStyle = `rgba(0,212,255,${opacities[b]})`;
+      gl.lineWidth = 0.5;
+      gl.stroke();
+    }
+
+    /* ── Draw mouse connection lines ── */
+    if(mxR > -999){
+      gl.beginPath();
+      let hasLines = false;
+      for(let i = 0; i < COUNT; i++){
+        const dx = px[i] - mxR, dy = py[i] - myR;
+        const d2 = dx * dx + dy * dy;
+        if(d2 < MOUSE_SQ){
+          gl.moveTo(mxR, myR);
+          gl.lineTo(px[i], py[i]);
+          hasLines = true;
+        }
+      }
+      if(hasLines){
+        gl.strokeStyle = 'rgba(0,212,255,0.06)';
+        gl.lineWidth = 0.4;
+        gl.stroke();
+      }
+    }
+
+    /* ── Draw dots — single path per color group ── */
+    /* Cyan dots */
+    gl.fillStyle = 'rgba(0,212,255,0.5)';
+    gl.beginPath();
+    for(let i = 0; i < COUNT; i++){
+      gl.moveTo(px[i] + rad[i], py[i]);
+      gl.arc(px[i], py[i], rad[i], 0, 6.2832);
+    }
+    gl.fill();
+
+    /* Glow pass — slightly larger, more transparent */
+    gl.fillStyle = 'rgba(0,212,255,0.08)';
+    gl.beginPath();
+    for(let i = 0; i < COUNT; i++){
+      const r2 = rad[i] * 3;
+      gl.moveTo(px[i] + r2, py[i]);
+      gl.arc(px[i], py[i], r2, 0, 6.2832);
+    }
+    gl.fill();
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', () => { init(); frame(); });
+  } else { init(); frame(); }
+  addEventListener('resize', resize);
+})();
+
 /* ── LOADER ── */
 window.addEventListener('load', () => {
   setTimeout(() => {
