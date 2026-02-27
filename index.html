@@ -25,7 +25,7 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 /* ════════════════════════════════════════════════
    ROOT VARIABLES
@@ -63,7 +63,7 @@
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; cursor:none !important; }
 html { scroll-behavior:smooth; }
 body {
-  font-family:'Inter',sans-serif;
+  font-family:'Sora',sans-serif;
   background:var(--bg0);
   color:var(--text1);
   line-height:1.7;
@@ -1004,6 +1004,17 @@ footer span { color:var(--cyan); }
 @keyframes trail-fade { 0%{opacity:1;transform:translate(-50%,-50%) scale(1);} 100%{opacity:0;transform:translate(-50%,-160%) scale(0.4);} }
 
 /* ════════════════════════════════════════════════
+   GRAIN TEXTURE OVERLAY
+════════════════════════════════════════════════ */
+body::after {
+  content:''; position:fixed; inset:0; z-index:9000;
+  pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity:0.025;
+  mix-blend-mode:overlay;
+}
+
+/* ════════════════════════════════════════════════
    AURORA BACKGROUND BLOBS
 ════════════════════════════════════════════════ */
 .aurora-blob {
@@ -1558,16 +1569,17 @@ footer span { color:var(--cyan); }
           </div>
         </div>
         <div class="proj-title">Autonomous Data Analysis Agent</div>
-        <p class="proj-desc">LLM-powered ReAct agent that accepts natural language queries, autonomously writes & executes Python, generates visualizations, and returns business insights — zero code required.</p>
+        <p class="proj-desc">LLM-powered autonomous agent with 7 specialized tools — performs statistical testing, ML modeling, time series analysis, interactive Plotly visualizations, and data quality assessment from natural language queries.</p>
         <div class="proj-metrics">
-          <span class="proj-metric">🔄 Auto code exec</span>
-          <span class="proj-metric">📊 Auto viz</span>
-          <span class="proj-metric">🧩 4 AI tools</span>
+          <span class="proj-metric">🧩 7 AI tools</span>
+          <span class="proj-metric">📊 14 chart types</span>
+          <span class="proj-metric">🔬 15+ stat tests</span>
         </div>
         <div class="exp-stack">
           <span class="stack-tag">LangChain Agents</span>
-          <span class="stack-tag">OpenAI</span>
-          <span class="stack-tag">pandas</span>
+          <span class="stack-tag">Anthropic Claude</span>
+          <span class="stack-tag">Plotly</span>
+          <span class="stack-tag">scikit-learn</span>
           <span class="stack-tag">Streamlit</span>
         </div>
         <div class="proj-links">
@@ -1933,6 +1945,7 @@ footer span { color:var(--cyan); }
             <span class="edu-chip">Machine Learning Fundamentals</span>
           </div>
           <div class="cert-pill">🏅 Google Data Analytics Certified</div>
+          <div class="cert-pill">🏅 Applied Machine Learning — UT Dallas</div>
         </div>
       </div>
     </div>
@@ -1988,7 +2001,7 @@ footer span { color:var(--cyan); }
 
 <!-- ═══ FOOTER ═══ -->
 <footer>
-  <p>Built by <span>Satya Sai Prakash Kantamani</span> · Gen AI Engineer & Data Scientist · Richardson, TX · © 2025</p>
+  <p>Built by <span>Satya Sai Prakash Kantamani</span> · Gen AI Engineer & Data Scientist · Richardson, TX · © 2026</p>
 </footer>
 
 <!-- ═══════════════════════════════════════════
@@ -2249,7 +2262,7 @@ document.querySelectorAll('[data-count]').forEach(el => counterObs.observe(el));
     {
       tag: 'THE ARSENAL',
       stats: [
-        { num:'6',   lbl:'AI Systems Built'       },
+        { num:'7',   lbl:'AI Systems Built'       },
         { num:'50K', lbl:'Monte Carlo Sims'        },
         { num:'27',  lbl:'ML Features Engineered'  },
       ]
@@ -2527,17 +2540,18 @@ const diveData = {
   },
   agent: {
     title:'Data Analysis AI Agent',
-    badge:'Gen AI · LangChain Agents · ReAct',
+    badge:'Gen AI · LangChain Agents · Tool-Calling',
     badgeColor:'rgba(0,212,255,0.1)', badgeBorder:'rgba(0,212,255,0.3)', badgeText:'#00d4ff',
-    arch:'User Query → ReAct Planner (GPT-4o-mini)\n  → Tool Selection: dataset_info / pandas / stats / plot\n  → Execute Tool → Observe Result\n  → Repeat (max 10 iterations)\n  → Final Answer + Visualizations',
+    arch:'User Query → Tool-Calling Agent (Anthropic Claude)\n  → Tool Selection from 7 tools: explore_data / run_code / statistical_test / create_chart / train_model / analyze_time_series / data_quality\n  → Execute Tool → Observe Result\n  → Repeat (max 30 iterations, 600s timeout)\n  → Final Answer + Interactive Plotly Charts',
     highlights:[
-      '<strong>ReAct Framework</strong> — Reason-Act-Observe loop enables fully autonomous multi-step analysis',
-      '<strong>4 Custom Tools</strong> — pandas_tool, stats_tool, plot_tool, dataset_info_tool built with @tool decorator',
-      '<strong>Safe sandbox</strong> — Code runs in isolated namespace with restricted builtins, no shell access',
-      '<strong>Auto-visualization</strong> — Generates bar, line, scatter, heatmap, box, pie charts from plain English',
-      '<strong>Iteration guard</strong> — Max 10 iterations prevents infinite loops on complex multi-step queries'
+      '<strong>7 Specialized Tools</strong> — explore_data, run_code, statistical_test, create_chart, train_model, analyze_time_series, data_quality',
+      '<strong>Statistical Rigor</strong> — 15+ tests: normality (Shapiro/D\'Agostino/KS), t-test, Mann-Whitney, ANOVA, Kruskal-Wallis, chi-square, Pearson/Spearman, VIF, ADF, KPSS with effect sizes and assumption checking',
+      '<strong>ML Pipeline</strong> — Classification, regression, clustering with baseline comparison, stratified k-fold CV, feature importance charts, and XGBoost/Random Forest/Gradient Boosting support',
+      '<strong>Time Series Suite</strong> — ADF + KPSS stationarity, STL decomposition, ACF/PACF, rolling stats, ARIMA forecasting with confidence intervals',
+      '<strong>14 Interactive Chart Types</strong> — Plotly-powered: histogram, bar, line, scatter, box, violin, heatmap, pie, area, treemap, scatter matrix, 2D density, time series',
+      '<strong>Data Quality Engine</strong> — Missing value classification (MCAR/MAR/MNAR), IQR outlier detection, type validation, distribution anomaly detection'
     ],
-    stack:['LangChain','OpenAI GPT-4o','AgentExecutor','pandas','matplotlib','seaborn','Streamlit','ReAct']
+    stack:['LangChain','Anthropic Claude','AgentExecutor','Plotly','SciPy','statsmodels','scikit-learn','XGBoost','pandas','NumPy','Streamlit']
   },
   portfolio: {
     title:'Portfolio Management ML',
