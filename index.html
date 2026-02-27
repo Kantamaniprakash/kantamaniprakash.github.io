@@ -1501,6 +1501,7 @@ footer span { color:var(--cyan); }
       <button class="pf-btn active" data-filter="all">⚡ All Projects</button>
       <button class="pf-btn" data-filter="genai">🤖 Gen AI</button>
       <button class="pf-btn" data-filter="ml">📊 Machine Learning</button>
+      <button class="pf-btn" data-filter="enterprise">🏭 Enterprise AI</button>
     </div>
     <div class="projects-grid">
 
@@ -1608,6 +1609,36 @@ footer span { color:var(--cyan); }
         <div class="proj-links">
           <a href="https://github.com/kantamaniprakash/Bitcoin-Price-Forecasting" target="_blank" class="proj-link">⚡ GitHub →</a>
           <button class="dive-btn" onclick="openDive('bitcoin')">🔬 Tech Deep Dive</button>
+        </div>
+      </div>
+
+      <!-- Supply Chain AIP — Palantir Foundry -->
+      <div class="proj-card genai-card" data-category="enterprise">
+        <div class="proj-card-glow"></div>
+        <div class="proj-top">
+          <div class="proj-icon proj-icon-purple">🏭</div>
+          <div style="display:flex;gap:0.4rem;flex-wrap:wrap;">
+            <span class="proj-badge badge-genai">✨ Gen AI</span>
+            <span class="proj-badge badge-featured">⭐ Featured</span>
+          </div>
+        </div>
+        <div class="proj-title">Supply Chain Disruption Intelligence</div>
+        <p class="proj-desc">Enterprise-grade supply chain risk platform on Palantir Foundry + AIP. LLM agent queries live Ontology to surface disruption risks 68 hours earlier — powered by XGBoost, Temporal Fusion Transformer, GraphSAGE, and Monte Carlo VaR.</p>
+        <div class="proj-metrics">
+          <span class="proj-metric">⏱ 68h early warning</span>
+          <span class="proj-metric">📉 74% stockout reduction</span>
+          <span class="proj-metric">🤖 AIP agent</span>
+        </div>
+        <div class="exp-stack">
+          <span class="stack-tag">Palantir Foundry</span>
+          <span class="stack-tag">Palantir AIP</span>
+          <span class="stack-tag">XGBoost + SHAP</span>
+          <span class="stack-tag">GraphSAGE</span>
+          <span class="stack-tag">PyTorch</span>
+        </div>
+        <div class="proj-links">
+          <a href="https://github.com/Kantamaniprakash/supply-chain-aip" target="_blank" class="proj-link">⚡ GitHub →</a>
+          <button class="dive-btn" onclick="openDive('supplychain')">🔬 Tech Deep Dive</button>
         </div>
       </div>
 
@@ -2469,6 +2500,20 @@ const diveData = {
       '<strong>500+ ZIP codes</strong> — Comprehensive coverage across the entire state of Texas'
     ],
     stack:['Python','scikit-learn','pandas','geopandas','Folium','K-Means','DBSCAN','Yelp API','Census API']
+  },
+  supplychain: {
+    title:'Supply Chain Disruption Intelligence',
+    badge:'Palantir Foundry · AIP · GraphSAGE · TFT',
+    badgeColor:'rgba(124,58,237,0.2)', badgeBorder:'rgba(124,58,237,0.4)', badgeText:'#a78bfa',
+    arch:'Raw ERP / Carrier / GDELT Feeds → Bronze Layer (DQ + schema enforcement)\n  → Silver Layer (30+ features: rolling windows, EWM, JS divergence)\n  → Gold Layer (composite risk score)\n  → ML Engine: XGBoost + Optuna HPO → P(disruption | t+30)\n  → GraphSAGE → Contagion matrix (N×N supplier pairs)\n  → Gaussian Copula Monte Carlo VaR (N=50,000 sims)\n  → Palantir AIP Agent → live Ontology queries + action functions\n  → Workshop Dashboard + Executive Briefing',
+    highlights:[
+      '<strong>Temporal Fusion Transformer</strong> — Full PyTorch TFT (Lim et al. 2021) for P10/P50/P90 demand forecasting across 30-day horizon',
+      '<strong>GraphSAGE contagion model</strong> — Inductive GNN (Hamilton et al. 2017) predicts P(supplier j disrupted | supplier i disrupted) across all N×N pairs',
+      '<strong>Gaussian Copula VaR</strong> — Cholesky-decomposed correlated disruption sampling (Embrechts et al. 2002), N=50,000 Monte Carlo simulations',
+      '<strong>ECOD anomaly detection</strong> — Isolation Forest + ECOD ensemble (Li & Li 2022) catches black-swan events outside supervised model scope',
+      '<strong>AIP autonomous agent</strong> — GPT-4o connected to live Foundry Ontology; queries suppliers, triggers POs, sends alerts without human routing'
+    ],
+    stack:['Palantir Foundry','Palantir AIP','XGBoost','SHAP','Optuna','PyTorch','GraphSAGE','PySpark','Monte Carlo VaR','GPT-4o']
   }
 };
 
